@@ -1,0 +1,595 @@
+@media screen and (min-width:320px){
+    .carousel-caption h2{
+        display: none;
+    }
+    .carousel-caption a{
+        padding: 10px 20px;    
+        color:#fff;
+        font-size: 8px;
+    }
+    .books{
+        width: 100%;
+    }
+    .booksFirst{
+        width: 100%;
+    }
+    .latestProduct article{
+        background: url(../img/glassShelf.png) no-repeat bottom;
+        background-size: 300px 100px;
+    }
+    .testimonials p{
+        position: absolute;
+        top:15px;
+        left:9%;
+        bottom: 0;
+        width: 250px;  
+        font-size: 11px;
+        text-align: justify;
+    }
+    .ballon{
+        width:290px;
+        height:123px;
+        margin-top: 50px;
+    }
+    .quote{
+        position: absolute;
+        top:3%;
+        left:5px ;
+        top: -10px;
+    }
+    .crasDapubus{
+        text-align: center;
+    }
+    .fromBlog p{  
+        font-size: 12px;
+    }
+    footer{
+        text-align: center;
+    }
+    .copyRight {
+        display: block;
+        font-size: 13px;
+    }
+    .footerDown .fa{
+        font-size: 18px;
+    }
+    .sideBar{
+        display: none;
+    }
+    .blogPostImages img{
+        margin-left: 0px
+    }
+
+    .blogPostImages span{
+        margin-left: 0px;
+    }
+    .bigA{
+        margin-left: 0px;
+    }
+    .whiteSpace{
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width:480px){
+    .ava{
+        margin-left: 123px;
+    }
+    .cocaCola, .apple {
+        margin-left: 15px;
+    }
+}
+
+@media screen and (min-width:768px){
+    .middle-second h1{
+        margin-top: 0px;
+    }
+    .menu ul li a{
+        color:#68913d;
+        background: url(../img/ellipse.png) no-repeat right center;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 16px;
+    }
+    .navbar-brand{
+        display: none;
+    }
+    .navbar-form {
+        display: none;
+    }
+    .shopingCart{
+        display: none !important;
+    }
+    .textPages{
+        display: none !important;
+    }
+    .top-menu-first{
+        display: block;
+    }
+    .header-middle{
+        display: block;
+    }
+    .navbar .navbar-nav {
+    display: inline-block;
+   
+}
+
+    .menu ul li a:hover{
+        background: none !important;
+        color:green;
+        background: url(../img/ellipse.png) no-repeat right center !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 16px;
+    }
+    .navbar .navbar-collapse {  
+        background: none;    
+    }
+    .navbar-nav .dropdown-menu li a{
+   color:#080;
+   background: none !important;
+}
+    .navbar-nav .dropdown-menu li a:hover{
+   color:#fff;
+   background: #080 !important;
+}
+
+    .carousel-caption h2{
+        display: block;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    .carousel-caption a{
+        padding: 10px 20px;    
+        font-size: 12px;
+    }
+    .testimonials p{
+        position: absolute;
+        top:15px;
+        left:15% ;
+        bottom: 0;
+        width: 250px;  
+        font-size: 14px;
+    }
+    .ballon{
+        width:330px;
+        height:183px;
+    }
+    .quote{
+        position: absolute;
+
+        left:5% ;
+        bottom: 0;
+    }
+    .ava img{
+        float: left !important;
+    }
+    .ava {
+        margin-left: 13px;
+    }
+    .content h2{
+        float: none !important;
+    }
+    .content h3{
+        float: none !important;
+    }
+    .latestProduct article{
+        background: none;
+    }
+    .latestProduct .container{
+        background: url(../img/glassShelf.png) no-repeat bottom;
+        background-size: 100%;
+
+    }
+
+    .latestProduct article img{
+        padding-bottom: 30px;
+    }
+    .text h1{ 
+        font-size: 24px;
+    }
+    .boxes article{
+        width: 230px;
+    }
+    .fromBlog div.greenBox{
+        width: 100px;
+        height: 100px;
+    }
+    .crasDapubus{
+        text-align: left;
+    }
+    .fromBlog div.orangeBox{
+        width: 100px;
+        height: 100px;
+    }
+    footer{
+        text-align:left;
+    }
+    .copyRight {
+        display: inline;
+        font-size: 14px;
+    }
+    .footerDown .fa{
+        font-size: 20px;
+    }
+    /************BOOKS**************/
+    .breadcrumb > li{
+        font-size: 36px;
+    }
+
+    .breadcrumb li > a{
+        font-size: 36px;
+    }
+    .breadcrumb li > a:hover{
+        font-size: 36PX;
+    }
+    .productSorting p{
+        padding-top: 0;
+    }
+    .lists{
+        display: block !important;
+    }
+    .artArchitecturePhotography{
+        display: none;
+    }
+
+    .leftArticle li {
+        text-align: left;
+    }
+    .spacing{
+        padding: 30px 0px;
+    }
+    .spacing span{
+    padding-right: 15px;
+ 
+}
+    .sideBar{
+        display: block;
+    }
+    .nike{
+        font-size: 14px;
+        margin-top: 100px;
+        text-align: left;
+      
+    }
+    .nike li a{
+        color: #599806;
+    }
+    .fa-chevron-left::before {
+        content: "\f053";
+        padding-right: 20px;
+        color: #000;
+        font-weight: 600;
+    }
+    .fa-chevron-right::before {
+        content: "\f053";
+        padding-left: 20px;
+        color: #000;
+        font-weight: 600;
+    }
+    .mediaFirst{
+        margin-left: 70px;
+        margin-top: 100px;
+    }
+    .mediaSecond{
+        margin-left: 140px;
+    }
+    .mediaThird{
+        margin-left: 210px;
+    }
+   
+    .maps iframe{
+        height: 350px;
+    }
+    .crasDapibus a{  
+    font-size: 26px;   
+    }
+    .spacing a{  
+    font-size: 20px;
+    } 
+    .bestsellers .books{
+        width: 33%;
+    }
+     .booksFirst{
+        width: 33%;
+    }
+}
+
+
+@media screen and (min-width:992px){
+
+    .middle-first{
+        display:block;
+    }
+    .delivery{
+        display:block;
+    }
+    .top-menu-third {
+
+        margin-top: 0px;
+    }
+    .middle-second{
+        text-align: center;
+    }
+    .menu ul li a:hover{
+        background: none !important;
+        color:#333333;
+        background: url(../img/ellipse.png) no-repeat right center !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 18px;
+    }
+    .menu ul li a{
+        background: none !important;
+        color:green;
+        background: url(../img/ellipse.png) no-repeat right center !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 18px;
+    }
+    .middle-third ul li{
+        width: 48%;
+    }
+    .carousel-caption h2{
+        font-size: 30px;
+    }
+    .carousel-caption a{
+        padding: 15px 25px;    
+        font-size: 14px;
+    }
+    .bestsellers .books{
+        float: left;
+        width: 20%;
+    }
+    .booksFirst{
+        width: 20%;
+    }
+    
+    .text h1{ 
+        font-size: 30px;
+    }
+    .features .content{
+        width: 400px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .boxes article{
+        width: 300px;
+    }
+    .ballon{
+        width:400px;
+        height: 203px;
+    }
+    .testimonials p{
+        position: absolute;
+        top:40px;
+        left:12% ;
+        bottom: 0;
+        width: 330px;  
+        font-size: 14px;
+        color: #2e312a;
+    }
+    .ava {
+        margin-left: 13px;
+    }
+    .fromBlog div.greenBox{
+        width: 150px;
+        height: 150px;
+    }
+    .fromBlog div.orangeBox{
+        width: 150px;
+        height: 150px;
+    }
+    .fromBlog p{
+        font-size: 13px;
+    }
+    .socialNetworks .fa {
+        
+    }
+    .footerTop input { 
+        padding: 5px 15px 5px 10px;
+        width: 130px;
+    }
+    .booksFirst.firstBook {
+        margin-bottom: 0;
+    }
+    .bestsellers h4 {
+        font-size: 13px;
+    }
+    
+    
+    .media{
+        width: 728px;
+        float: right;
+        margin-right: 100px;
+    }
+    .smallBooks .books{
+        width: 30% !important;
+        float: left;
+    }
+    .banksyBlog{
+        margin-left: 45px;
+    }
+    .oddFuture{
+        margin-top: 30px;
+        margin-left: 45px;
+        float: none !important;
+    }
+    .titleAbout{
+        font-size: 30px;
+        padding-left:100px;
+        padding-right: 100px;
+    }
+    .maps iframe{
+        height: 400px;
+    }
+    .bestsellers .books{
+    float: left;
+    width: 20%;
+}
+    .crasDapibus a{  
+    font-size: 30px;   
+}
+ .spacing a{  
+    font-size: 24px;
+    } 
+    .modernDesign p{
+    font-size: 16px;
+    line-height: 1.5;
+}
+.latestProduct article{
+    padding-bottom: 80px;
+}
+}
+
+@media screen and (min-width:1200px){
+    .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        line-height: 1;
+        width: 100% !important;
+    }
+    .top-menu-first ul li a {
+        padding-left: 1px;
+        padding-right: 10px;
+        font-size: 12px;
+    }
+    .menu ul li a{
+        background: none !important;
+        color:#333333;
+        background: url(../img/ellipse.png) no-repeat right center !important;
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+    .menu ul li a:hover{
+        background: none !important;
+        color:green;
+        background: url(../img/ellipse.png) no-repeat right center !important;
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+    .carousel-caption h2{
+
+        font-size: 36px;
+        margin-bottom: 60px;
+    }
+    .carousel-caption a{
+        padding: 15px 35px;    
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .latestProduct article img{
+        padding-bottom: 90px;
+    }
+    .latestProduct article{
+    padding-bottom: 40px;
+}
+    .text h1{ 
+        font-size: 36px;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .ballon{
+        width:480px;
+    }
+    .ava {
+        margin-left: 73px;
+    }
+    .testimonials p{
+        position: absolute;
+        top:40px;
+        left:15% ;
+        bottom: 0;
+        width: 360px;  
+        font-size: 14px;
+        color: #2e312a;
+    }
+    .testimonials span{
+
+        font-size: 80px;
+    }
+    .features .content{
+        width: 500px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .features .content p{
+        width: 250px;
+        color: #2e312a;
+        font-size: 14px;
+    }
+    .boxes article{
+        width: 365px;
+    }
+    .fromBlog div.greenBox{
+        width: 100%;
+        height: 170px;
+    }
+    .fromBlog div.orangeBox{
+        width:100%;
+        height: 175px;
+    }
+    .fromBlog p{  
+        font-size: 14px;
+    }
+   
+
+    .footerTop input { 
+        padding: 5px 15px 5px 15px;
+        width: 160px;
+    }
+    .bestsellers h4 {
+        font-size: 14px;
+    }
+   
+    .books{
+        float: left;
+        width: 20%;
+    }
+    .smallBooks .books{
+        width: 25% !important;
+        float: left;
+    }
+   
+    .blogPostImages a{
+        display: block;
+    }
+    .blogPostImages img{
+        margin-bottom: 30px;
+        margin-left: 45px;
+        display: block;
+    }
+   
+    .blogPostImages img:nth-child(3){
+        margin-bottom: 10px;
+    }
+    .blogPostImages span{
+        margin-left: 45px;
+    }
+    .bigA{
+        margin-left: 45px;
+        margin-top: 50px;
+    }
+   
+    .fa-chevron-left::before {
+        padding-right: 40px;
+    }
+    .fa-chevron-right::before {    
+        padding-left: 40px;     
+    }
+    .modernDesign p{
+    width: 500px;
+}
+.crasDapibus a{  
+    font-size: 36px;   
+}
+.modernDesign h4{
+  margin-top: 50px;
+}
+    .modernDesign p{
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+}
