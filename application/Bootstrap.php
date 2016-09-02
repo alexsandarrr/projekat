@@ -23,11 +23,35 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					
 				)
 			),
+			
+			'AboutPage' => array(
+				'title' => 'About Page',
+				'subtypes' => array(
+					
+				)
+			),
+			
+			'BooksPage' => array(
+				'title' => 'Books Page',
+				'subtypes' => array(
+					
+				)
+			),
+			
+			'BlogPage' => array(
+				'title' => 'Blog Page',
+				'subtypes' => array(
+					
+				)
+			),
 		);
 		
 		$rootSitemapPageTypes = array(
 			'StaticPage' => 0,
-			'PhotoGalleriesPage' => 1
+			'PhotoGalleriesPage' => 1,
+			'AboutPage' => 1,
+			'BooksPage' => 1,
+			'BlogPage' => 1,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -70,6 +94,60 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					array(
 						'controller' => 'photogalleries',
 						'action' => 'gallery',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'AboutPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'about',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'BooksPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'books',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+				
+				$router->addRoute('book-route', new Zend_Controller_Router_Route(
+					$sitemapPageMap['url'] . '/:id/:book_slug',
+					array(
+						'controller' => 'books',
+						'action' => 'book',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'BlogPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'blog',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+				
+				$router->addRoute('blog-post-route', new Zend_Controller_Router_Route(
+					$sitemapPageMap['url'] . '/:id/:book_slug',
+					array(
+						'controller' => 'blog',
+						'action' => 'blogpost',
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));
