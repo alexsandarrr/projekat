@@ -44,6 +44,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					
 				)
 			),
+			
+			'CategoriesPage' => array(
+				'title' => 'Categories Page',
+				'subtypes' => array(
+					'StaticPage' => 0,
+				)
+			),
 		);
 		
 		$rootSitemapPageTypes = array(
@@ -52,6 +59,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'AboutPage' => 1,
 			'BooksPage' => 1,
 			'BlogPage' => 1,
+			'CategoriesPage' => 0,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -144,10 +152,31 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				));
 				
 				$router->addRoute('blog-post-route', new Zend_Controller_Router_Route(
-					$sitemapPageMap['url'] . '/:id/:book_slug',
+					$sitemapPageMap['url'] . '/:id/:blog_post_slug',
 					array(
 						'controller' => 'blog',
 						'action' => 'blogpost',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'CategoriesPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'categories',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+				
+				$router->addRoute('category-route', new Zend_Controller_Router_Route(
+					$sitemapPageMap['url'] . '/:id/:category_slug',
+					array(
+						'controller' => 'categories',
+						'action' => 'category',
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));
