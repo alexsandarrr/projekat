@@ -1,0 +1,307 @@
+<?php
+
+$this->headTitle('Books - Edit Book');
+
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
+
+?>
+<div class="page-header">
+    <h1>Books <small>Edit Book</small></h1>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <?php echo $this->systemMessagesHtml($this->systemMessages); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading text-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a 
+                        href="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'index'), 'default', true) ?>" 
+                        class="btn btn-default"
+                        ><i class="glyphicon glyphicon-arrow-left"></i> Back to all books</a>
+                </div>
+            </div>
+            <div class="panel-body">
+				<form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                    <input type="hidden" name="task" value="save">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>New Book</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="title">Title</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('title')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s title',
+                                    'id' => 'title',
+                                    'required' => 'required'
+                                ));
+                                ?>
+                                <span class="help-block">min 3, max 255 characters</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('title')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('title')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="format">Format</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('format')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s format',
+                                    'id' => 'format',
+                                    'required' => 'required',
+                                ));
+                                ?>
+                                <span class="help-block">min 3, max 255 characters</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('format')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('format')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="number_of_pages">Number of Pages</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('number_of_pages')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s number of pages',
+                                    'id' => 'number_of_pages',
+									'required' => 'required'
+                                ));
+                                ?>
+                                <span class="help-block"></span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('number_of_pages')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('number_of_pages')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-md-4 control-label" for="date_of_publication">Date of Publication</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('date_of_publication')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s date of publication',
+                                    'id' => 'date_of_publication',
+									'required' => 'required',
+                                ));
+                                ?>
+                                <span class="help-block">Enter date in format: "YYYY-MM-DD"</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('date_of_publication')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('date_of_publication')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-md-4 control-label" for="isbn">ISBN</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('isbn')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s ISBN',
+                                    'id' => 'isbn',
+									'required' => 'required',
+                                ));
+                                ?>
+                                <span class="help-block">Enter ISBN in format: "000-00-000-0000-0"</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('isbn')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('isbn')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="category_id">Category</label>  
+							<div class="col-md-4">
+								<?php 
+								echo $form->getElement('category_id')->setAttribs(array(
+									'class' => 'form-control input-md',
+									'id' => 'category_id',
+									'required' => 'required'
+								));
+								?>
+							</div>
+							<div class="col-md-4">
+								<?php if ($form->getElement('category_id')->hasErrors()) {?>
+								<div class="has-error">
+									<?php foreach ($form->getElement('category_id')->getMessages() as $message) {?>
+									<p class="help-block"><?php echo $this->escape($message);?></p>
+									<?php }?>
+								</div>
+								<?php }?>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="author_id">Author</label>  
+							<div class="col-md-4">
+								<?php 
+								echo $form->getElement('author_id')->setAttribs(array(
+									'class' => 'form-control input-md',
+									'id' => 'author_id',
+									'required' => 'required',
+								));
+								?>
+							</div>
+							<div class="col-md-4">
+								<?php if ($form->getElement('author_id')->hasErrors()) {?>
+								<div class="has-error">
+									<?php foreach ($form->getElement('author_id')->getMessages() as $message) {?>
+									<p class="help-block"><?php echo $this->escape($message);?></p>
+									<?php }?>
+								</div>
+								<?php }?>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="cover_id">Cover</label>  
+							<div class="col-md-4">
+								<?php 
+								echo $form->getElement('cover_id')->setAttribs(array(
+									'class' => 'form-control input-md',
+									'id' => 'cover_id',
+									'required' => 'required'
+								));
+								?>
+							</div>
+							<div class="col-md-4">
+								<?php if ($form->getElement('cover_id')->hasErrors()) {?>
+								<div class="has-error">
+									<?php foreach ($form->getElement('cover_id')->getMessages() as $message) {?>
+									<p class="help-block"><?php echo $this->escape($message);?></p>
+									<?php }?>
+								</div>
+								<?php }?>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="letter_id">Letter</label>  
+							<div class="col-md-4">
+								<?php 
+								echo $form->getElement('letter_id')->setAttribs(array(
+									'class' => 'form-control input-md',
+									'id' => 'letter_id',
+									'required' => 'required',
+								));
+								?>
+							</div>
+							<div class="col-md-4">
+								<?php if ($form->getElement('letter_id')->hasErrors()) {?>
+								<div class="has-error">
+									<?php foreach ($form->getElement('letter_id')->getMessages() as $message) {?>
+									<p class="help-block"><?php echo $this->escape($message);?></p>
+									<?php }?>
+								</div>
+								<?php }?>
+							</div>
+						</div>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="about">About</label>
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('about')->setAttribs(array(
+                                    'class' => 'form-control',
+                                    'id' => 'about',
+                                    'rows' => 12
+                                ));
+                                ?>
+                                </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('about')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('about')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="book_photo">Photo</label>
+                            <div class="col-md-4">
+                                <div>
+                                    <a href="#" class="thumbnail">
+                                        <img src="<?php echo $this->bookImgUrl($this->book);?>">
+                                    </a>
+                                </div>
+                                <input type="file" name="book_photo" id="book_photo" class="form-control input-md">
+                                <span class="help-block">change photo</span>
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('book_photo')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('book_photo')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="new_book_cancel"></label>
+                            <div class="col-md-8 text-right">
+                                <a href="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'index'), 'default', true);?>" 
+                                   id="new_book_cancel" name="new_book_cancel" class="btn btn-default">Cancel</a>
+                                <button type=submit" id="new_book_submit" name="new_book_submit" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

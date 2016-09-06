@@ -1,17 +1,17 @@
-<?php
+c<?php
 
-class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_CmsCovers extends Zend_Db_Table_Abstract
 {
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
     
-    protected $_name = 'cms_books';
+    protected $_name = 'cms_covers';
     
     /** 
      * @param int $id
-     * @return null|array Associative array with keys as cms_books table columns or NULL if not found
+     * @return null|array Associative array with keys as cms_covers table columns or NULL if not found
      */
-    public function getBookById ($id) {
+    public function getCoverById ($id) {
         
         $select = $this->select();
         $select->where('id = ?', $id);
@@ -29,70 +29,70 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
     
     /**
      * @param int $id
-     * @param array $book Associative array with keys as column names and values as column new values
+     * @param array $cover Associative array with keys as column names and values as column new values
      */
-    public function updateBook ($id, $book) {
+    public function updateCover ($id, $cover) {
         
-        if (isset($book['id'])) {
+        if (isset($cover['id'])) {
             // Forbid changing of user id
-            unset($book['id']);
+            unset($cover['id']);
         }
         
-        $this->update($book, 'id = ' . $id);
+        $this->update($cover, 'id = ' . $id);
     }
     
     /**
-     * @param array $book Associative array with keys as column names and values as column new values
-     * @return int The ID of new book (autoincrement)
+     * @param array $cover Associative array with keys as column names and values as column new values
+     * @return int The ID of new cover (autoincrement)
      */
-    public function insertBook ($book) {
-        // fetch order number for new book
+    public function insertCover ($cover) {
+        // fetch order number for new cover
         
         $select = $this->select();
         
         $select->order('order_number DESC');
         
-        $bookWithBiggerstOrderNumber = $this->fetchRow($select);
+        $coverWithBiggerstOrderNumber = $this->fetchRow($select);
         
-        if ($bookWithBiggerstOrderNumber instanceof Zend_Db_table_Row) {
+        if ($coverWithBiggerstOrderNumber instanceof Zend_Db_table_Row) {
             
-            $book['order_number'] = $bookWithBiggerstOrderNumber['order_number'] + 1;
+            $cover['order_number'] = $coverWithBiggerstOrderNumber['order_number'] + 1;
             
         } else {
 			
-            $book['order_number'] = 1;
+            $cover['order_number'] = 1;
         }
         
-        $id = $this->insert($book);
+        $id = $this->insert($cover);
         
         return $id;
     }
     
     /**
-     * @param int $id ID of book to delete
+     * @param int $id ID of cover to delete
      */
-    public function deleteBook ($id) {
+    public function deleteCover ($id) {
         
-        $bookPhotoFilePath = PUBLIC_PATH . '/uploads/books/' . $id . '.jpg';
-        if(is_file($bookPhotoFilePath)) {
+        $coverPhotoFilePath = PUBLIC_PATH . '/uploads/covers/' . $id . '.jpg';
+        if(is_file($coverPhotoFilePath)) {
 			
-            unlink($bookPhotoFilePath);
+            unlink($coverPhotoFilePath);
         }
         
-        $book = $this->getBookById($id);
+        $cover = $this->getCoverById($id);
         
         $this->update(array(
            'order_number' => new Zend_Db_Expr('order_number - 1') 
         ),
-        'order_number > ' . $book['order_number']);
+        'order_number > ' . $cover['order_number']);
         
         $this->delete('id = ' . $id);
     }
     
     /**
-     * @param int $id ID of book to disable
+     * @param int $id ID of cover to disable
      */
-    public function disableBook ($id) {
+    public function disableCover ($id) {
         
         $this->update(array(
             'status' => self::STATUS_DISABLED
@@ -100,16 +100,16 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
     }
     
     /**
-     * @param int $id ID of book to enable
+     * @param int $id ID of cover to enable
      */
-    public function enableBook ($id) {
+    public function enableCover ($id) {
         
         $this->update(array(
             'status' => self::STATUS_ENABLED
         ), 'id = ' . $id);
     }
     
-    public function updateOrderOfBooks ($sortedIds) {
+    public function updateOrderOfCovers ($sortedIds) {
         foreach ($sortedIds as $orderNumber => $id) {
             
             $this->update(array(
