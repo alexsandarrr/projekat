@@ -2,39 +2,38 @@
 
 class Admin_BooksController extends Zend_Controller_Action
 {
-	public function indexAction () {
-		$flashMessenger = $this->getHelper('FlashMessenger');
+    public function indexAction () {
+        $flashMessenger = $this->getHelper('FlashMessenger');
 
-		$systemMessages = array(
-			'success' => $flashMessenger->getMessages('success'),
-			'errors' => $flashMessenger->getMessages('errors'),
-		);
+        $systemMessages = array(
+                'success' => $flashMessenger->getMessages('success'),
+                'errors' => $flashMessenger->getMessages('errors'),
+        );
 
-		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+        $cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
 
-		$books = $cmsBooksDbTable->search(array(
+        $books = $cmsBooksDbTable->search(array(
 //            'filters' => array(
 //                'id' => array(1, 3, 5, 7)
 //            ),
-			'orders' => array(
-				'order_number' => 'ASC'
-			),
-			//'limit' => 4,
-			//'page' => 3
-		));
+                'orders' => array(
+                        'order_number' => 'ASC'
+                ),
+                //'limit' => 4,
+                //'page' => 3
+        ));
 
-		$this->view->books = $books;
-		$this->view->systemMessages = $systemMessages;
-	}
+        $this->view->books = $books;
+        $this->view->systemMessages = $systemMessages;
+    }
 	
-	public function addAction () {
-		$request = $this->getRequest();
+    public function addAction () {
+	$request = $this->getRequest();
         
         $flashMessenger = $this->getHelper('FlashMessenger');
 
         $form = new Application_Form_Admin_BookAdd();
 
-        //default form data
         $form->populate(array(
             
         ));
@@ -44,7 +43,7 @@ class Admin_BooksController extends Zend_Controller_Action
             'errors' => $flashMessenger->getMessages('errors'),
         );
 
-        if ($request->isPost() && $request->getPost('task') === 'save') {
+        if ($request->isPost() && $request->getPost('task') === 'update') {
 
             try {
                 if (!$form->isValid($request->getPost())) {
@@ -199,7 +198,7 @@ class Admin_BooksController extends Zend_Controller_Action
         $this->view->book = $book;
 	}
 	
-	public function deleteAction () {
+    public function deleteAction () {
         
         $request = $this->getRequest();
         

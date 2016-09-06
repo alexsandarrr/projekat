@@ -1,8 +1,8 @@
-<!--******************************************
-        **********************************************
-                        MAIN START
-        *********************************************
-        ******************************************-->
+<?php
+
+$this->headTitle($this->sitemapPage['title'])
+
+?>
         <main class="bookMain">
 
             <ol class="breadcrumb text-center">
@@ -77,7 +77,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <article>
-                                        <img src="/front/img/books/largeOrangeBook.png" class="bigOrangeBook center-block">
+                                        <img src="<?php echo $this->bookImgUrl($this->book);?>" class="bigOrangeBook center-block" height="429" width="303">
+                                        <hr>
                                         <img class="secondImage center-block" src="/front/img/socialNetworks.png">
 
                                     </article>
@@ -86,16 +87,14 @@
                                     <article>
 
                                         <div class="inspirationSpeaks">
-                                            <h2>Inspiration speaks by hezythme</h2>
+                                            <h2><?php echo $this->escape($this->book['title']);?></h2>
                                             <p class="palacio"><span class="by">by</span> <a href="#">R.J. Palacio</a></p>
                                             <div class="clearfix addToCart">
-                                                <p class="number pull-left">$15,99</p>
+                                                <p class="number pull-left"><?php echo $this->escape($this->book['price']);?> din.</p>
                                                 <p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>
                                             </div>
                                             <div class="pharagraphas">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                                                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam </p>
+                                            <?php echo $this->escape($this->book['about']);?>    
                                             </div>
 
 

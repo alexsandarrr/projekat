@@ -4,7 +4,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
 
 	protected function _initRouter() {
-		//ensure that database is configured
 		$this->bootstrap('db');
 		
 		$sitemapPageTypes = array(
@@ -12,7 +11,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'StaticPage' => array(
 				'title' => 'Static Page',
 				'subtypes' => array(
-					// 0 means unlimited number
 					'StaticPage' => 0
 				)
 			),
