@@ -63,6 +63,12 @@ class Application_Form_Admin_BookAdd extends Zend_Form
                 ->setRequired(true);
         $this->addElement($isbn);
 		
+		$price = new Zend_Form_Element_Text('price');
+        $price->addFilter('StringTrim')
+                ->addValidator('StringLength', false, array('min' => 3, 'max' => 255))
+                ->setRequired(true);
+        $this->addElement($price);
+		
 		$categoryId = new Zend_Form_Element_Select('category_id');
 		$categoryId->addMultiOption('', '-- Select Category --')
                 ->setRequired(true);

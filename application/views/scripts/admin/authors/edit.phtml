@@ -1,0 +1,147 @@
+<?php
+
+$this->headTitle('Authors - Edit Author');
+
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
+
+?>
+<div class="page-header">
+    <h1>Authors <small>Edit Author</small></h1>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <?php echo $this->systemMessagesHtml($this->systemMessages); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading text-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a 
+                        href="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'index'), 'default', true) ?>" 
+                        class="btn btn-default"
+                        ><i class="glyphicon glyphicon-arrow-left"></i> Back to all authors</a>
+                </div>
+            </div>
+            <div class="panel-body">
+				<form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                    <input type="hidden" name="task" value="update">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Edit Author</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="first_name">Title</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('first_name')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter author\'s first name',
+                                    'id' => 'first_name',
+                                    'required' => 'required'
+                                ));
+                                ?>
+                                <span class="help-block">min 3, max 255 characters</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('first_name')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('first_name')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="last_name">Format</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('last_name')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter author\'s last name',
+                                    'id' => 'last_name',
+                                    'required' => 'required',
+                                ));
+                                ?>
+                                <span class="help-block">min 3, max 255 characters</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('last_name')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('last_name')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="about">About</label>
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('about')->setAttribs(array(
+                                    'class' => 'form-control',
+                                    'id' => 'about',
+                                    'rows' => 12
+                                ));
+                                ?>
+                                </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('about')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('about')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="author_photo">Photo</label>
+                            <div class="col-md-4">
+                                <div>
+                                    <a href="#" class="thumbnail">
+                                        <img src="<?php echo $this->authorImgUrl($this->author);?>">
+                                    </a>
+                                </div>
+                                <input type="file" name="author_photo" id="author_photo" class="form-control input-md">
+                                <span class="help-block">change photo</span>
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('author_photo')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('author_photo')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="new_author_cancel"></label>
+                            <div class="col-md-8 text-right">
+                                <a href="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'index'), 'default', true);?>" 
+                                   id="new_author_cancel" name="new_author_cancel" class="btn btn-default">Cancel</a>
+                                <button type="submit" id="new_author_submit" name="new_author_submit" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

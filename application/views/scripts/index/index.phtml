@@ -7,31 +7,23 @@
                             MAIN SLIDER START
              ******************************************-->
             <div class="slider">
+				
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
                     <!-- Wrapper for slides -->
+					
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="/front/img/slider.png">
+						<?php foreach ($this->indexSlides as $index => $indexSlide) {?>
+                        <div class="item <?php echo $index == 0 ? 'active' : '';?>">
+							<img src="<?php echo $this->indexSlideImgUrl($indexSlide);?>">
                             <div class="carousel-caption">
-                                <h2><b>Hezy Theme:</b> What We Can All Do to Save America's Future</h2>
-                                <a href="#">VIEW MORE</a>
+                                <h2><b></b><?php echo $this->indexSlideLinkUrl($indexSlide);?></h2>
+                                <?php if ($indexSlide['link_type'] != 'NoLink') { ?>
+									<a href="<?php echo $this->indexSlideLinkUrl($indexSlide);?>" class="btn btn-lg btn-primary"><?php echo $this->escape($indexSlide['link_label']);?></a>
+                                <?php } ?>
                             </div>
                         </div>
-                        <div class="item">
-                            <img src="/front/img/slider.png">
-                            <div class="carousel-caption">
-                                <h2><b>Hezy Theme:</b> What We Can All Do to Save America's Future</h2>
-                                <a href="#">VIEW MORE</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="/front/img/slider.png">
-                            <div class="carousel-caption">
-                                <h2><b>Hezy Theme:</b> What We Can All Do to Save America's Future</h2>
-                                <a href="#">VIEW MORE</a>
-                            </div>
-                        </div>
+						<?php } ?>
                     </div>
 
                     <!-- Controls -->
@@ -44,6 +36,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+				
+					
             </div>
             <!--******************************************
                           MAIN SLIDER END

@@ -49,6 +49,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					'StaticPage' => 0,
 				)
 			),
+			
+			'AuthorsPage' => array(
+				'title' => 'Authors Page',
+				'subtypes' => array(
+					
+				)
+			),
 		);
 		
 		$rootSitemapPageTypes = array(
@@ -58,6 +65,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'BooksPage' => 1,
 			'BlogPage' => 1,
 			'CategoriesPage' => 0,
+			'AuthorsPage' => 1,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -175,6 +183,27 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					array(
 						'controller' => 'categories',
 						'action' => 'category',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'AuthorsPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'authors',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+				
+				$router->addRoute('author-route', new Zend_Controller_Router_Route(
+					$sitemapPageMap['url'] . '/:id/:author_slug',
+					array(
+						'controller' => 'authors',
+						'action' => 'author',
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));

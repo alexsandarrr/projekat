@@ -1,8 +1,8 @@
 <?php
-$this->headTitle('Books');
+$this->headTitle('Authors');
 ?>
 <div class="page-header">
-    <h1>Books</h1>
+    <h1>Authors</h1>
 </div>
 <div class="row">
     <div class="coll-lg-12">
@@ -17,9 +17,9 @@ $this->headTitle('Books');
                     <button data-action="save-order" class="btn btn-success" style="display: none;"><i class="glyphicon glyphicon-save"></i> Save order</button>
                     <button data-action="toggle-sort" class="btn btn-default"><i class="glyphicon glyphicon-list"></i> Change order</button>
                     <a 
-                        href="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'add'), 'default', true) ?>" 
+                        href="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'add'), 'default', true) ?>" 
                         class="btn btn-default"
-                        ><i class="glyphicon glyphicon-plus"></i> Add Book</a>
+                        ><i class="glyphicon glyphicon-plus"></i> Add Author</a>
                 </div>
             </div>
             <div class="panel-body">
@@ -29,81 +29,60 @@ $this->headTitle('Books');
                             <th></th>
                             <th class="text-center">Img</th>
                             <th class="text-center">Status</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>ISBN</th>
-							<th>price</th>
-                            <th>Category</th>
-                            <th>Format</th>
-                            <th class="text-center">Number of Pages</th>
-                            <th class="text-center">Date of Publication</th>
-                            <th>Cover</th>
-                            <th>Letter</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>About</th>
                             <th class="text-center">#</th>
                         </tr>
                     </thead>
                     <tbody>
                                 <?php
-                                foreach ($this->books as $book) {
-                                    if ($book['status'] == Application_Model_DbTable_CmsBooks::STATUS_ENABLED) {
+                                foreach ($this->authors as $author) {
+                                    if ($author['status'] == Application_Model_DbTable_CmsAuthors::STATUS_ENABLED) {
                                         ?>
-                                <tr data-book-id="<?php echo $this->escape($book['id']); ?>">
+                                <tr data-author-id="<?php echo $this->escape($author['id']); ?>">
                                     <td class="text-center"><i data-action="sort" class="glyphicon glyphicon-list" style="display: none; cursor: pointer;"></i></td>
-                                    <td class="text-center"><img style="max-height: 50px;" src="<?php echo $this->bookImgUrl($book); ?>"></td>
+                                    <td class="text-center"><img style="max-height: 50px;" src="<?php echo $this->authorImgUrl($author); ?>"></td>
                                     <td class="text-center"><span class="badge alert-success" title="enabled"><i class="glyphicon glyphicon-ok"></i></span></td>
-                                    <td><?php echo $this->escape($book['title']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['author_id']); ?></td>
-                                    <td><?php echo $this->escape($book['isbn']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['category_id']); ?></td>
-                                    <td><?php echo $this->escape($book['price']); ?></td>
-                                    <td><?php echo $this->escape($book['format']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['number_of_pages']); ?></td>
-                                    <td><?php echo $this->escape($book['date_of_publication']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['cover_id']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['letter_id']); ?></td>
+                                    <td><?php echo $this->escape($author['first_name']); ?></td>
+                                    <td class="text-center"><?php echo $this->escape($author['last_name']); ?></td>
+                                    <td><?php echo $this->escape($author['about']); ?></td>
                                     <td width="10%" class="text-center">
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                             <a  
-                                                href="<?php echo $this->bookUrl($book); ?>"
+                                                href="<?php echo $this->authorUrl($author); ?>"
                                                 target="_blank"
                                                 type="button" class="btn btn-default" title="preview"><i class="glyphicon glyphicon-eye-open"></i></a>
 
-                                            <a href="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'edit', 'id' => $book['id']), 'default', true); ?>"
+                                            <a href="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'edit', 'id' => $author['id']), 'default', true); ?>"
                                                type="button" class="btn btn-default" title="edit"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <button data-book-id="<?php echo $this->escape($book['id']); ?>" data-action="disable" type="button" class="btn btn-default" title="disable"><i class="glyphicon glyphicon-remove"></i></button>
-                                            <button data-book-id="<?php echo $this->escape($book['id']); ?>" data-action="delete" type="button" class="btn btn-default" title="delete"><i class="glyphicon glyphicon-trash"></i></button>
+                                            <button data-author-id="<?php echo $this->escape($author['id']); ?>" data-action="disable" type="button" class="btn btn-default" title="disable"><i class="glyphicon glyphicon-remove"></i></button>
+                                            <button data-author-id="<?php echo $this->escape($author['id']); ?>" data-action="delete" type="button" class="btn btn-default" title="delete"><i class="glyphicon glyphicon-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
                                     <?php
                                 } else {
                                     ?>
-                                <tr data-book-id="<?php echo $this->escape($book['id']); ?>" class="danger">
+                                <tr data-author-id="<?php echo $this->escape($author['id']); ?>" class="danger">
                                     <td class="text-center"><i data-action="sort" class="glyphicon glyphicon-list" style="display: none; cursor: pointer;"></i></td>
-                                    <td class="text-center"><img style="max-height: 24px;" src="<?php echo $this->bookImgUrl($book); ?>"></td>
+                                    <td class="text-center"><img style="max-height: 24px;" src="<?php echo $this->authorImgUrl($author); ?>"></td>
                                     <td class="text-center"><span class="badge alert-danger" title="disabled"><i class="glyphicon glyphicon-remove"></i></span></td>
-                                    <td><?php echo $this->escape($book['title']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['author_id']); ?></td>
-                                    <td><?php echo $this->escape($book['isbn']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['category_id']); ?></td>
-                                    <td><?php echo $this->escape($book['price']); ?></td>
-                                    <td><?php echo $this->escape($book['format']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['number_of_pages']); ?></td>
-                                    <td><?php echo $this->escape($book['date_of_publication']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['cover_id']); ?></td>
-                                    <td class="text-center"><?php echo $this->escape($book['letter_id']); ?></td>
+                                    <td><?php echo $this->escape($author['first_name']); ?></td>
+                                    <td class="text-center"><?php echo $this->escape($author['last_name']); ?></td>
+                                    <td><?php echo $this->escape($author['about']); ?></td>
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                             <a  
-                                                href="<?php echo $this->bookUrl($book); ?>"
+                                                href="<?php echo $this->authorUrl($author); ?>"
                                                 target="_blank"
                                                 type="button" class="btn btn-default" title="preview"><i class="glyphicon glyphicon-eye-open"></i></a>
 
                                             <a  
-                                                href="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'edit', 'id' => $book['id']), 'default', true); ?>"
+                                                href="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'edit', 'id' => $author['id']), 'default', true); ?>"
                                                 type="button" class="btn btn-default" title="edit"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <button data-book-id="<?php echo $this->escape($book['id']); ?>" data-action="enable" type="button" class="btn btn-default" title="enable"><i class="glyphicon glyphicon-ok"></i></button>
-                                            <button data-book-id="<?php echo $this->escape($book['id']); ?>" data-action="delete" type="button" class="btn btn-default" title="delete"><i class="glyphicon glyphicon-trash"></i></button>
+                                            <button data-author-id="<?php echo $this->escape($author['id']); ?>" data-action="enable" type="button" class="btn btn-default" title="enable"><i class="glyphicon glyphicon-ok"></i></button>
+                                            <button data-author-id="<?php echo $this->escape($author['id']); ?>" data-action="delete" type="button" class="btn btn-default" title="delete"><i class="glyphicon glyphicon-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -120,17 +99,17 @@ $this->headTitle('Books');
     </div>
 </div>
 
-<form method="post" action="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'delete'), 'default', true); ?>" id="delete-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
+<form method="post" action="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'delete'), 'default', true); ?>" id="delete-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
     <input type="hidden" name="task" value="delete">
     <input type="hidden" name="id" value="">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Delete book</h4>
+                <h4 class="modal-title">Delete author</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete book?</p>
+                <p>Are you sure you want to delete author?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -140,17 +119,17 @@ $this->headTitle('Books');
     </div><!-- /.modal-dialog -->
 </form><!-- /.modal -->
 
-<form method="post" action="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'disable'), 'default', true); ?>" id="disable-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
+<form method="post" action="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'disable'), 'default', true); ?>" id="disable-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
     <input type="hidden" name="task" value="disable">
     <input type="hidden" name="id" value="">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Disable book</h4>
+                <h4 class="modal-title">Disable author</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to disable book?</p>
+                <p>Are you sure you want to disable author?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -160,17 +139,17 @@ $this->headTitle('Books');
     </div><!-- /.modal-dialog -->
 </form><!-- /.modal -->
 
-<form method="post" action="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'enable'), 'default', true); ?>" id="enable-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
+<form method="post" action="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'enable'), 'default', true); ?>" id="enable-warning-dialog" class="modal fade" tabindex="-1" role="dialog">
     <input type="hidden" name="task" value="enable">
     <input type="hidden" name="id" value="">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Enable book</h4>
+                <h4 class="modal-title">Enable author</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to enable book?</p>
+                <p>Are you sure you want to enable author?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -180,7 +159,7 @@ $this->headTitle('Books');
     </div><!-- /.modal-dialog -->
 </form><!-- /.modal -->
 
-<form method="post" action="<?php echo $this->url(array('controller' => 'admin_books', 'action' => 'updateorder'), 'default', true); ?>" style="display: none;" id="save-order-form">
+<form method="post" action="<?php echo $this->url(array('controller' => 'admin_authors', 'action' => 'updateorder'), 'default', true); ?>" style="display: none;" id="save-order-form">
     <input type="hidden" name="task" value="saveOrder">
     <input type="hidden" name="sorted_ids" value="">
 </form>
@@ -200,14 +179,14 @@ $this->inlineScript()->appendFile($this->baseUrl('/admin/bower_components/jquery
         var target = $(this).is('[data-action="delete"]') ? $(this) : $(this).closest('[data-action="delete"]');
 
         // get any attribute
-        //var bookId = target.attr('data-book-id');
+        //var authorId = target.attr('data-author-id');
 
         // get "data-" attributes
-        var bookId = target.data('book-id');
+        var authorId = target.data('author-id');
 
 
         // set value for input field with name "id"
-        $('#delete-warning-dialog').find('[name="id"]').val(bookId);
+        $('#delete-warning-dialog').find('[name="id"]').val(authorId);
 
         $('#delete-warning-dialog').modal('show');
 
@@ -222,14 +201,14 @@ $this->inlineScript()->appendFile($this->baseUrl('/admin/bower_components/jquery
         var target = $(this).is('[data-action="disable"]') ? $(this) : $(this).closest('[data-action="disable"]');
 
         // get any attribute
-        var bookId = target.attr('data-book-id');
+        var authorId = target.attr('data-author-id');
 
         // get "data-" attributes
-        //var bookId = target.data('book-id');
+        //var authorId = target.data('author-id');
 
 
         // set value for input field with name "id"
-        $('#disable-warning-dialog').find('[name="id"]').val(bookId);
+        $('#disable-warning-dialog').find('[name="id"]').val(authorId);
 
         $('#disable-warning-dialog').modal('show');
 
@@ -244,14 +223,14 @@ $this->inlineScript()->appendFile($this->baseUrl('/admin/bower_components/jquery
         var target = $(this).is('[data-action="enable"]') ? $(this) : $(this).closest('[data-action="enable"]');
 
         // get any attribute
-        var bookId = target.attr('data-book-id');
+        var authorId = target.attr('data-author-id');
 
         // get "data-" attributes
-        //var bookId = target.data('book-id');
+        //var authorId = target.data('author-id');
 
 
         // set value for input field with name "id"
-        $('#enable-warning-dialog').find('[name="id"]').val(bookId);
+        $('#enable-warning-dialog').find('[name="id"]').val(authorId);
 
         $('#enable-warning-dialog').modal('show');
 
@@ -313,8 +292,8 @@ $this->inlineScript()->appendFile($this->baseUrl('/admin/bower_components/jquery
         e.preventDefault();
         e.stopPropagation();
 
-        var bookSortedIds = $('#rows-table > tbody').sortable('toArray', {
-            attribute: 'data-book-id'
+        var authorSortedIds = $('#rows-table > tbody').sortable('toArray', {
+            attribute: 'data-author-id'
         });
 
         var saveOrderForm = $('#save-order-form');
@@ -322,7 +301,7 @@ $this->inlineScript()->appendFile($this->baseUrl('/admin/bower_components/jquery
         // find element with name "sorted_ids" in save order form and set its value
         // with string in wich are sorted ids separated with coma (,)
         // ex. "12,3,8,10,11,6,2,1,9,7,5,4"
-        saveOrderForm.find('[name="sorted_ids"]').val(bookSortedIds.join(','));
+        saveOrderForm.find('[name="sorted_ids"]').val(authorSortedIds.join(','));
 
         // manually submit form by triggering "submit" event
         saveOrderForm.trigger('submit');

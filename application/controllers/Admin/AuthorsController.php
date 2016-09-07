@@ -1,6 +1,6 @@
 <?php
 
-class Admin_BooksController extends Zend_Controller_Action
+class Admin_AuthorsController extends Zend_Controller_Action
 {
     public function indexAction () {
         $flashMessenger = $this->getHelper('FlashMessenger');
@@ -10,9 +10,9 @@ class Admin_BooksController extends Zend_Controller_Action
                 'errors' => $flashMessenger->getMessages('errors'),
         );
 
-        $cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+        $cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 
-        $books = $cmsBooksDbTable->search(array(
+        $authors = $cmsAuthorsDbTable->search(array(
 //            'filters' => array(
 //                'id' => array(1, 3, 5, 7)
 //            ),
@@ -23,7 +23,7 @@ class Admin_BooksController extends Zend_Controller_Action
                 //'page' => 3
         ));
 
-        $this->view->books = $books;
+        $this->view->authors = $authors;
         $this->view->systemMessages = $systemMessages;
     }
 	
@@ -32,7 +32,7 @@ class Admin_BooksController extends Zend_Controller_Action
         
         $flashMessenger = $this->getHelper('FlashMessenger');
 
-        $form = new Application_Form_Admin_BookAdd();
+        $form = new Application_Form_Admin_AuthorAdd();
 
         $form->populate(array(
             
@@ -47,49 +47,49 @@ class Admin_BooksController extends Zend_Controller_Action
 
             try {
                 if (!$form->isValid($request->getPost())) {
-                    throw new Application_Model_Exception_InvalidInput('Invalid data was sent for new book');
+                    throw new Application_Model_Exception_InvalidInput('Invalid data was sent for new author');
                 }
 
                 $formData = $form->getValues();
                 
-                unset($formData['book_photo']);
+                unset($formData['author_photo']);
                 
-                $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+                $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
                 
-                $bookId = $cmsBooksTable->insertBook($formData);
+                $authorId = $cmsAuthorsTable->insertAuthor($formData);
                 
-                if ($form->getElement('book_photo')->isUploaded()) {
+                if ($form->getElement('author_photo')->isUploaded()) {
                     // photo is uploaded
                     
-                    $fileInfos = $form->getElement('book_photo')->getFileInfo('book_photo');
-                    $fileInfo = $fileInfos['book_photo'];
+                    $fileInfos = $form->getElement('author_photo')->getFileInfo('author_photo');
+                    $fileInfo = $fileInfos['author_photo'];
                     
                     try {
-                        $bookPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
+                        $authorPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
                         
-                        $bookPhoto->fit(303, 429);
+                        $authorPhoto->fit(303, 429);
                         
-                        $bookPhoto->save(PUBLIC_PATH . '/uploads/books/' . $bookId . '.jpg');
+                        $authorPhoto->save(PUBLIC_PATH . '/uploads/authors/' . $authorId . '.jpg');
                         
                     } catch (Exception $ex) {
                         
-                        $flashMessenger->addMessage('Book has been saved but error occured during image processing', 'errors');
+                        $flashMessenger->addMessage('Author has been saved but error occured during image processing', 'errors');
 
                         $redirector = $this->getHelper('Redirector');
                         $redirector->setExit(true)
                                 ->gotoRoute(array(
-                                    'controller' => 'admin_books',
+                                    'controller' => 'admin_authors',
                                     'action' => 'edit',
-                                    'id' => $bookId
+                                    'id' => $authorId
                                         ), 'default', true);
                     }
                 }
-                $flashMessenger->addMessage('Book has been saved', 'success');
+                $flashMessenger->addMessage('Author has been saved', 'success');
 
                 $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
             } catch (Application_Model_Exception_InvalidInput $ex) {
@@ -108,26 +108,24 @@ class Admin_BooksController extends Zend_Controller_Action
         
         if ($id <= 0) {
             
-            // prekida se izvrsavanje programa i prikazuje se "Page not found"
-            throw new Zend_Controller_Router_Exception('Invalid book id: ' . $id, 404);
+            throw new Zend_Controller_Router_Exception('Invalid author id: ' . $id, 404);
         }
         
-        $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+        $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
                 
-        $book = $cmsBooksTable->getBookById($id);
+        $author = $cmsAuthorsTable->getAuthorById($id);
         
-        if (empty($book)) {
-            throw new Zend_Controller_Router_Exception('No book is found with id: ' . $id, 404);
+        if (empty($author)) {
+            throw new Zend_Controller_Router_Exception('No author is found with id: ' . $id, 404);
         }
         
         
         
         $flashMessenger = $this->getHelper('FlashMessenger');
 
-        $form = new Application_Form_Admin_BookAdd();
+        $form = new Application_Form_Admin_AuthorAdd();
 
-        //default form data
-        $form->populate($book);
+        $form->populate($author);
 
         $systemMessages = array(
             'success' => $flashMessenger->getMessages('success'),
@@ -138,53 +136,43 @@ class Admin_BooksController extends Zend_Controller_Action
 
             try {
 
-                // check form is valid
                 if (!$form->isValid($request->getPost())) {
-                    throw new Application_Model_Exception_InvalidInput('Invalid data was sent for book');
+                    throw new Application_Model_Exception_InvalidInput('Invalid data was sent for author');
                 }
 
-                // get form data
                 $formData = $form->getValues();
                 
-                unset($formData['book_photo']);
+                unset($formData['author_photo']);
                 
-                if ($form->getElement('book_photo')->isUploaded()) {
+                if ($form->getElement('author_photo')->isUploaded()) {
                     // photo is uploaded
                     
-                    $fileInfos = $form->getElement('book_photo')->getFileInfo('book_photo');
-                    $fileInfo = $fileInfos['book_photo'];
+                    $fileInfos = $form->getElement('author_photo')->getFileInfo('author_photo');
+                    $fileInfo = $fileInfos['author_photo'];
                     
                     try {
-                        // open uploaded photo in temporary directory
-                        $bookPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
+						
+                        $authorPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
                         
-                        $bookPhoto->fit(303, 429);
+                        $authorPhoto->fit(303, 429);
                         
-                        $bookPhoto->save(PUBLIC_PATH . '/uploads/books/' . $book['id'] . '.jpg');
+                        $authorPhoto->save(PUBLIC_PATH . '/uploads/authors/' . $author['id'] . '.jpg');
                         
                     } catch (Exception $ex) {
                         
                         throw new Application_Model_Exception_InvalidInput('Error occured during image processing');
                         
                     }
-                    
-                    //$fileInfo = $_FILES['book_photo']; moze i ovako
                 }
                 
-                // radimo update postojeceg zapisa u tabeli
-                $cmsBooksTable->updateBook($book['id'], $formData);
+                $cmsAuthorsTable->updateAuthor($author['id'], $formData);
 
-                // do actual task
-                // save to database etc
-                
-                // set system message
-                $flashMessenger->addMessage('Book has been updated', 'success');
+                $flashMessenger->addMessage('Author has been updated', 'success');
 
-                // redirect to same or another page
                 $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
             } catch (Application_Model_Exception_InvalidInput $ex) {
@@ -195,7 +183,7 @@ class Admin_BooksController extends Zend_Controller_Action
         $this->view->systemMessages = $systemMessages;
         $this->view->form = $form;
         
-        $this->view->book = $book;
+        $this->view->author = $author;
 	}
 	
     public function deleteAction () {
@@ -203,14 +191,11 @@ class Admin_BooksController extends Zend_Controller_Action
         $request = $this->getRequest();
         
         if (!$request->isPost() || $request->getPost('task') != 'delete') {
-            // request is not post
-            // or task is not delete
-            // redirect to index page
             
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -218,33 +203,33 @@ class Admin_BooksController extends Zend_Controller_Action
         $flashMessenger = $this->getHelper('FlashMessenger');
         
         try {
-            // read $_POST['id]
+			
         $id = (int) $request->getPost('id');
         
         if ($id <= 0) {
             
-            throw new Application_Model_Exception_InvalidInput('Invalid book id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('Invalid author id: ' . $id);
             
         }
         
-        $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+        $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
                 
-        $book = $cmsBooksTable->getBookById($id);
+        $author = $cmsAuthorsTable->getAuthorById($id);
         
-        if (empty($book)) {
+        if (empty($author)) {
             
-            throw new Application_Model_Exception_InvalidInput('No book is found with id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('No author is found with id: ' . $id);
             
         }
         
-        $cmsBooksTable->deleteBook($id);
+        $cmsAuthorsTable->deleteAuthor($id);
         
-        $flashMessenger->addMessage('Book ' . $book['first_name'] . ' ' . $book['last_name'] . ' has been deleted', 'success');
+        $flashMessenger->addMessage('Author ' . $author['first_name'] . ' ' . $author['last_name'] . ' has been deleted', 'success');
             
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         
@@ -256,7 +241,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -275,7 +260,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -288,28 +273,28 @@ class Admin_BooksController extends Zend_Controller_Action
         
         if ($id <= 0) {
             
-            throw new Application_Model_Exception_InvalidInput('Invalid book id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('Invalid author id: ' . $id);
             
         }
         
-        $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+        $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
                 
-        $book = $cmsBooksTable->getBookById($id);
+        $author = $cmsAuthorsTable->getAuthorById($id);
         
-        if (empty($book)) {
+        if (empty($author)) {
             
-            throw new Application_Model_Exception_InvalidInput('No book is found with id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('No author is found with id: ' . $id);
             
         }
         
-        $cmsBooksTable->disableBook($id);
+        $cmsAuthorsTable->disableAuthor($id);
         
-        $flashMessenger->addMessage('Book ' . $book['first_name'] . ' ' . $book['last_name'] . ' has been disabled', 'success');
+        $flashMessenger->addMessage('Author ' . $author['first_name'] . ' ' . $author['last_name'] . ' has been disabled', 'success');
             
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         
@@ -321,7 +306,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -340,7 +325,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -353,28 +338,28 @@ class Admin_BooksController extends Zend_Controller_Action
         
         if ($id <= 0) {
             
-            throw new Application_Model_Exception_InvalidInput('Invalid book id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('Invalid author id: ' . $id);
             
         }
         
-        $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+        $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
                 
-        $book = $cmsBooksTable->getBookById($id);
+        $author = $cmsAuthorsTable->getAuthorById($id);
         
-        if (empty($book)) {
+        if (empty($author)) {
             
-            throw new Application_Model_Exception_InvalidInput('No book is found with id: ' . $id);
+            throw new Application_Model_Exception_InvalidInput('No author is found with id: ' . $id);
             
         }
         
-        $cmsBooksTable->enableBook($id);
+        $cmsAuthorsTable->enableAuthor($id);
         
-        $flashMessenger->addMessage('Book ' . $book['first_name'] . ' ' . $book['last_name'] . ' has been enabled', 'success');
+        $flashMessenger->addMessage('Author ' . $author['first_name'] . ' ' . $author['last_name'] . ' has been enabled', 'success');
             
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         
@@ -386,7 +371,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -405,7 +390,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         }
@@ -428,16 +413,16 @@ class Admin_BooksController extends Zend_Controller_Action
             
             $sortedIds = explode(',', $sortedIds);
             
-            $cmsBooksTable = new Application_Model_DbTable_CmsBooks();
+            $cmsAuthorsTable = new Application_Model_DbTable_CmsAuthors();
             
-            $cmsBooksTable->updateOrderOfBooks($sortedIds);
+            $cmsAuthorsTable->updateOrderOfAuthors($sortedIds);
             
             $flashMessenger->addMessage('Order is successfully saved', 'success');
             
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
             
@@ -448,7 +433,7 @@ class Admin_BooksController extends Zend_Controller_Action
             $redirector = $this->getHelper('Redirector');
                 $redirector->setExit(true)
                         ->gotoRoute(array(
-                            'controller' => 'admin_books',
+                            'controller' => 'admin_authors',
                             'action' => 'index'
                                 ), 'default', true);
         

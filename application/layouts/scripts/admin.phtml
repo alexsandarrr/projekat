@@ -86,6 +86,9 @@ $user = Zend_Auth::getInstance()->getIdentity();
                         <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_books'), 'default', true);?>"><i class="fa fa-book fa-fw"></i> Books</a>
                         </li>
+						<li>
+                            <a href="<?php echo $this->url(array('controller' => 'admin_authors'), 'default', true);?>"><i class="fa fa-pencil-square-o  fa-fw"></i> Authors</a>
+                        </li>
                         <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_indexslides'), 'default', true);?>"><i class="fa fa-sliders fa-fw"></i> Index Slider</a>
                         </li>

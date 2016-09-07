@@ -20,34 +20,9 @@ $this->headTitle($this->sitemapPage['title'])
                             <div class="lists">
                                 <h3 class="text-center">Books by Subject</h3>
                                 <ul class="text-center list-unstyled">
-                                    <li><a href="#">Art, Architecture & Photo</a></li>
-                                    <li><a href="#">Bibles & Bible Studies</a></li>
-                                    <li><a href="#">Biographies</a></li>
-                                    <li><a href="#">Businiess & Money</a></li>
-                                    <li><a href="#">Children's Books</a></li>
-                                    <li><a href="#">Commputing & Internet</a></li>
-                                    <li><a href="#">Cookbook, Food & Wine</a></li>
-                                    <li><a href="#">Crafts & Hobbies</a></li>
-                                    <li><a href="#">Diet & Health</a></li>
-                                    <li><a href="#">Education & Teaching</a></li>
-                                    <li><a href="#">Fiction & Literature</a></li>
-                                    <li><a href="#">Graphic Novels</a></li>
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">Home & Garden</a></li>
-                                    <li><a href="#">Humor</a></li>
-                                    <li><a href="#">Libros en espacol</a></li>
-                                    <li><a href="#">Medicine</a></li>
-                                    <li><a href="#">Mistery & Crime</a></li>
-                                    <li><a href="#">Notfiction</a></li>
-                                    <li><a href="#">Politics & Current Events</a></li>
-                                    <li><a href="#">Psychology</a></li>
-                                    <li><a href="#">Religion</a></li>
-                                    <li><a href="#">Reference</a></li>
-                                    <li><a href="#">Romanse</a></li>
-                                    <li><a href="#">Science & Nature</a></li>
-                                    <li><a href="#">Sciense Fiction & Fantasy</a></li>
-                                    <li><a href="#">Self-Impovement</a></li>
-                                    <li><a href="#">Sports & Adventure</a></li>
+									<?php foreach ($this->categories as $category) {?>
+									<li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
+									<?php }?>
                                 </ul>
 
                                 <h3 class="text-center">Best Books</h3>
@@ -90,7 +65,7 @@ $this->headTitle($this->sitemapPage['title'])
                                             <h2><?php echo $this->escape($this->book['title']);?></h2>
                                             <p class="palacio"><span class="by">by</span> <a href="#">R.J. Palacio</a></p>
                                             <div class="clearfix addToCart">
-                                                <p class="number pull-left"><?php echo $this->escape($this->book['price']);?> din.</p>
+                                                <p class="number pull-left"><?php echo $this->escape($this->book['price']);?></p>
                                                 <p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>
                                             </div>
                                             <div class="pharagraphas">
