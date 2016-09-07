@@ -162,7 +162,7 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
                     case 'category_id':
                     case 'author_id':
                     case 'order_number':
-					case 'status':
+                    case 'status':
                         if ($orderDirection === 'DESC') {
                             $select->order($field . ' DESC');
                         } else {

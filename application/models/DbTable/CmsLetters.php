@@ -158,11 +158,6 @@ class Application_Model_DbTable_CmsLetters extends Zend_Db_Table_Abstract
                     
                     case 'id':
                     case 'title':
-                    case 'isbn':
-                    case 'category_id':
-                    case 'author_id':
-                    case 'order_number':
-					case 'status':
                         if ($orderDirection === 'DESC') {
                             $select->order($field . ' DESC');
                         } else {
@@ -228,12 +223,7 @@ class Application_Model_DbTable_CmsLetters extends Zend_Db_Table_Abstract
             switch ($field) {
 
                 case 'id':
-				case 'title':
-				case 'isbn':
-				case 'category_id':
-				case 'author_id':
-				case 'order_number':
-				case 'status':
+		case 'title':
                     if (is_array($value)) {
                         $select->where($field . ' IN (?)', $value);
                     } else {

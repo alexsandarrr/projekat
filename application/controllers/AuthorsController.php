@@ -22,7 +22,7 @@ class AuthorsController extends Zend_Controller_Action
 		
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array (
-				'short_title' => 'Categories Page'
+				'short_title' => 'Categories'
 			)
 		));
 		
@@ -89,7 +89,7 @@ class AuthorsController extends Zend_Controller_Action
 		
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array (
-				'short_title' => 'Categories Page'
+				'short_title' => 'Categories'
 			)
 		));
 		

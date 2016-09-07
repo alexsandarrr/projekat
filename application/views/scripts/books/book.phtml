@@ -20,9 +20,9 @@ $this->headTitle($this->sitemapPage['title'])
                             <div class="lists">
                                 <h3 class="text-center">Books by Subject</h3>
                                 <ul class="text-center list-unstyled">
-									<?php foreach ($this->categories as $category) {?>
-									<li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
-									<?php }?>
+                                    <?php foreach ($this->categories as $category) {?>
+                                    <li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
+                                    <?php }?>
                                 </ul>
 
                                 <h3 class="text-center">Best Books</h3>
@@ -63,7 +63,7 @@ $this->headTitle($this->sitemapPage['title'])
 
                                         <div class="inspirationSpeaks">
                                             <h2><?php echo $this->escape($this->book['title']);?></h2>
-                                            <p class="palacio"><span class="by">by</span> <a href="#">R.J. Palacio</a></p>
+                                            <p class="palacio"><span class="by">by</span> <a href="#"><strong><em><?php echo $this->escape($this->author['name']);?></em></strong></a></p>
                                             <div class="clearfix addToCart">
                                                 <p class="number pull-left"><?php echo $this->escape($this->book['price']);?></p>
                                                 <p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>

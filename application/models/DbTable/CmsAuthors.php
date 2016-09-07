@@ -157,12 +157,9 @@ class Application_Model_DbTable_CmsAuthors extends Zend_Db_Table_Abstract
                 switch ($field) {
                     
                     case 'id':
-                    case 'title':
-                    case 'isbn':
-                    case 'category_id':
-                    case 'author_id':
+                    case 'name':
                     case 'order_number':
-					case 'status':
+                    case 'status':
                         if ($orderDirection === 'DESC') {
                             $select->order($field . ' DESC');
                         } else {
@@ -228,12 +225,10 @@ class Application_Model_DbTable_CmsAuthors extends Zend_Db_Table_Abstract
             switch ($field) {
 
                 case 'id':
-				case 'title':
-				case 'isbn':
-				case 'category_id':
-				case 'author_id':
-				case 'order_number':
-				case 'status':
+                case 'name':
+                case 'about':
+                case 'order_number':
+                case 'status':
                     if (is_array($value)) {
                         $select->where($field . ' IN (?)', $value);
                     } else {
@@ -241,12 +236,12 @@ class Application_Model_DbTable_CmsAuthors extends Zend_Db_Table_Abstract
                     }
                     break;
 
-                case 'title_search':
-                    $select->where('title LIKE ?', '%' . $value . '%');
+                case 'name_search':
+                    $select->where('name LIKE ?', '%' . $value . '%');
                     break;
 
-                case 'isbn_search':
-                    $select->where('isbn LIKE ?', '%' . $value . '%');
+                case 'about_search':
+                    $select->where('about LIKE ?', '%' . $value . '%');
                     break;
 				
                 case 'id_exclude':
