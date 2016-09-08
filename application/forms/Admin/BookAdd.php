@@ -7,7 +7,7 @@ class Application_Form_Admin_BookAdd extends Zend_Form
 		$cmsSitemapPagesDbTable = new Application_Model_DbTable_CmsSitemapPages();
 		$sitemapPageCategories = $cmsSitemapPagesDbTable->search(array(
 			'filters' => array (
-				'short_title' => 'Categories Page'
+				'short_title' => 'Categories'
 			)
 		));
 		$categoriesId = $sitemapPageCategories[0]['id'];
@@ -84,7 +84,7 @@ class Application_Form_Admin_BookAdd extends Zend_Form
                 ->setRequired(true);
 		
 		foreach ($authors as $author) {
-			$authorId->addMultiOption($author['id'], $author['first_name'] . " " . $author['last_name']);
+			$authorId->addMultiOption($author['id'], $author['name']);
 		}
 		
 		$this->addElement($authorId);

@@ -20,42 +20,23 @@ class BooksController extends Zend_Controller_Action {
 			throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
 		}
 
-		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
+	
+
+		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+		$books = $cmsBooksDbTable->search(array(
 			'filters' => array(
-				'short_title' => 'Categories'
-			)
-		));
-                
-		$categoryId = $sitemapPageCategories[0]['id'];
-		$categories = $cmsSitemapPageDbTable->search(array(
-			'filters' => array(
-				'parent_id' => $categoryId
-			),
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+				),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
+			'limit' => 20
 		));
-
-		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
-		$books = array();
-		if (count($categories) > 0) {
-			foreach ($categories as $category) {
-				$books[$category['id']] = $cmsBooksDbTable->search(array(
-					'filters' => array(
-						'category_id' => $category['id']
-					),
-					'orders' => array(
-						'order_number' => 'ASC',
-					),
-					'limit' => 5
-						)
-				);
-			}
-		}
+		
+		
 
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
-		$this->view->categories = $categories;
 	}
 
 	public function bookAction() {
@@ -124,7 +105,7 @@ class BooksController extends Zend_Controller_Action {
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->book = $book;
 		$this->view->categories = $categories;
-                $this->view->author = $author;
+        $this->view->author = $author;
 	}
 
 }

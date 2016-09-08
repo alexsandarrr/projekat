@@ -82,7 +82,7 @@ class Admin_PhotogalleriesController extends Zend_Controller_Action
 						//open uploaded photo in temporary directory
 						$photoGalleryPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
 						
-						$photoGalleryPhoto->fit(360, 270);
+						$photoGalleryPhoto->fit(900, 400);
 						
 						$photoGalleryPhoto->save(PUBLIC_PATH . '/uploads/photo-galleries/' . $photoGalleryId . '.jpg');
 						
@@ -185,7 +185,7 @@ class Admin_PhotogalleriesController extends Zend_Controller_Action
 						//open uploaded photo in temporary directory
 						$photoGalleryPhoto = Intervention\Image\ImageManagerStatic::make($fileInfo['tmp_name']);
 						
-						$photoGalleryPhoto->fit(360, 270);
+						$photoGalleryPhoto->fit(900, 400);
 						
 						$photoGalleryPhoto->save(PUBLIC_PATH . '/uploads/photo-galleries/' . $photoGallery['id'] . '.jpg');
 						

@@ -1,2 +1,76 @@
+<?php
 
+$this->headTitle($this->sitemapPage['title']);
+$books = $this->books;
+
+?>
+        <main class="bookMain">
+
+            <ol class="breadcrumb text-center">
+                <li><a href="#">Home</a></li>
+                <li><b>Books</b></li>
+            </ol>
+            <!--******************************************
+                            MAIN BESTSELLERS START
+             ******************************************-->
+			<?php 
+				foreach($this->categories as $category) {
+					if(count($books[$category['id']]) > 0){
+						?>
+
+							<div class="container">
+								<div class="bestsellers clearfix text-center">
+									<h2><?php echo $this->escape($category['title']);?></h2>
+									<div class="arrowRight">
+										<a href="<?php echo $this->categoryUrl($category);?>">See all <span class="fa fa-arrow-right"></span></a>
+									</div>
+									<?php 
+										foreach($books[$category['id']] as $book) {	
+											?>
+												<div class="books">
+													<figure class="center-block">
+														<a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive"></a>
+													</figure>
+													<h4 class="down"><a href="<?php echo $this->bookUrl($book);?>"><b><?php echo $this->escape($book['title']);?></b></a></h4>
+													<p><span class="by">by</span> Stephen King</p>
+													<p class="prise center-block"><?php echo $this->escape($book['price']);?><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+												</div>
+											<?php
+										}
+									?>
+								</div>
+								<hr>
+							</div>
+						<?php
+					}
+
+				}
+			?>
+                    
+                    
+
+            <div class="container">
+                <div class="bestsellers clearfix text-center">
+                    <h2>Sale</h2>
+                    <div class="books">
+                        <figure class="center-block">
+                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
+                            <span class="sale">SALE</span>
+                        </figure>                  
+                        <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
+                        <p><span class="by">by</span> Cormac McCartny</p>
+                        <p class="prise center-block">$1,401.75<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!--******************************************
+                             MAIN BESTSELLERS END
+              ******************************************-->
+        </main>
+        <!--******************************************
+        **********************************************
+                            MAIN END
+        *********************************************
+        *********************************************-->
 

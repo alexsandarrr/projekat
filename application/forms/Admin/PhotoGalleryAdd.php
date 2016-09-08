@@ -23,10 +23,10 @@ class Application_Form_Admin_PhotoGalleryAdd extends Zend_Form
 		$photoGalleryLeadingPhoto->addValidator('Count', true, 1)
 			->addValidator('MimeType', true, array('image/jpeg', 'image/gif', 'image/png'))
 			->addValidator('ImageSize', false, array(
-				'minwidth' => 360,
-				'minheight' => 270,
-				'maxwidth' => 2000,
-				'maxheight' => 2000
+				'minwidth' => 1000,
+				'minheight' => 450,
+				'maxwidth' => 5000,
+				'maxheight' => 5000
 			))
 			->addValidator('Size', false, array(
 				'max' => '10MB'

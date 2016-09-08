@@ -3,3 +3,35 @@
 $this->headTitle($this->sitemapPage['title']);
 $this->headMeta()->appendName('description', $this->sitemapPage['description']);
 ?>
+
+<!--******************************************
+                        MAIN START
+        *******************************************-->
+        <main>
+            <ol class="breadcrumb text-center blogPostBorder">
+                <li><a href="#">Home</a></li>
+                <li><b>Galleries</b></li>
+            </ol>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+						<?php foreach($this->photoGalleries as $photoGallery) {;?>
+						<div class="blogLists spacing">                          
+							<a href="<?php echo $this->photoGalleryUrl($photoGallery);?>" blog-img><img src="<?php echo $this->photoGalleryLeadingPhotoUrl($photoGallery);?>" alt="" class="center-block img-responsive"/></a>
+							<div class="spacing" style="text-align: center">
+								<a href="<?php echo $this->photoGalleryUrl($photoGallery);?>"><strong><?php echo $this->escape($photoGallery['title']);?></strong><p><strong><?php echo $this->escape($photoGallery['description']);?></p></a>
+							</div>
+						</div>
+						<?php }?>
+						<hr>
+					</div>
+				</div>
+			</div>
+        </main>
+        <!--******************************************
+        **********************************************
+                            MAIN END
+        *********************************************
+        *********************************************-->
+

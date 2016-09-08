@@ -114,7 +114,7 @@ $this->headTitle($this->sitemapPage['title']);
              ******************************************-->
 			<div class="container">
 				<div class="bestsellers clearfix text-center">
-					<h2>All Books</h2>
+					<h2><?php echo $this->escape($this->category['title']);?></h2>
 					<?php 
 						foreach($this->books as $book) {	
 							?>
@@ -131,122 +131,6 @@ $this->headTitle($this->sitemapPage['title']);
 					?>
 				</div>
 			</div>
-			<hr>
-			
-            <div class="container">
-                <div class="bestsellers clearfix text-center">
-                    <h2>Sale</h2>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                            <span class="sale">SALE</span>
-                        </figure>                  
-                        <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
-                        <p><span class="by">by</span> Cormac McCartny</p>
-                        <p class="prise center-block">$1,401.75<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!--******************************************
-                             MAIN BESTSELLERS END
-              ******************************************-->
-
-
-
-            <!--******************************************
-                           MAIN TESTIOMONIALS START
-            ******************************************-->
-            <div class="testimonials">
-                <div class="container">
-                    <h1 class="text-center">Customer testimonials</h1>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <article>
-                                <div class="image ballon center-block">
-                                    <span class="fa fa-quote-right"></span>  
-                                    <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>                                   
-                                </div>   
-                                <div class="ava">
-                                    <img src="/front/img/member1.png" class="img-responsive">
-                                </div>
-                                <div class="cocaCola">
-                                    <h2>Philip Antony Hopking</h2>
-                                    <h3>Coca-Cola</h3>     
-                                </div>                         
-                            </article>
-                        </div>
-                        <div class="col-sm-6">
-                            <article>
-                                <div class="image ballon center-block">
-                                    <span class="fa fa-quote-right"></span>  
-                                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam</p>                   
-                                </div>                       
-                                <div class="ava">
-                                    <img src="/front/img/member2.png" class="img-responsive">
-                                </div>
-                                <div class="apple">
-                                    <h2>Steve Jobs</h2>
-                                    <h3>Apple</h3>     
-                                </div>                             
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--******************************************
-                            MAIN TESTIOMONIALS END
-             ******************************************-->
-
-
-
-            <!--******************************************
-                           MAIN FROMBLOG START
-            ******************************************-->
-            <div class="fromBlog">
-                <div class="container">
-                    <h2 class="text-center">From the blog</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <article>
-                                        <figure>
-                                            <a href="#"><img src="/front/img/index-blog-1.png" alt="" class="center-block img-responsive"></a>
-                                        </figure>
-                                    </article>
-                                </div>
-                                <div class="col-sm-8 crasDapubus">
-                                    <article>
-                                        <h3><a href="#">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</a></h3>
-                                        <p class="comment"><a href="#">12 comments</a></p>
-                                        <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-                                    </article>                                   
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <figure>
-                                        <a href="#"><img src="/front/img/index-blog-2.png" alt="" class="center-block img-responsive"></a>
-                                        </figure>
-                                </div>
-                                <div class="col-sm-8 crasDapubus">
-                                    <article>
-                                        <h3><a href="#">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</a></h3>
-                                        <p class="comment"><a href="#">12 comments</a></p>
-                                        <p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque</p>
-                                    </article>                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <!--******************************************
-                             MAIN FROMBLOG END
-              ******************************************-->      
         </main>
         <!--******************************************
         **********************************************
