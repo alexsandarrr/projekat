@@ -20,22 +20,6 @@ class AuthorsController extends Zend_Controller_Action
             throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
         }
 		
-		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
-			'filters' => array (
-				'short_title' => 'Categories'
-			)
-		));
-		
-		$categoryId = $sitemapPageCategories[0]['id'];
-		$categories = $cmsSitemapPageDbTable->search(array(
-			'filters' => array (
-				'parent_id' => $categoryId
-			),
-			'orders' => array(
-				'order_number' => 'ASC'
-			),
-		));
-		
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
         $authors = $cmsAuthorsDbTable->search(array(
            'orders' => array(
@@ -45,7 +29,6 @@ class AuthorsController extends Zend_Controller_Action
 		
         $this->view->sitemapPage = $sitemapPage;
         $this->view->authors = $authors;
-		$this->view->categories = $categories;
     }
 
     public function authorAction () {
@@ -68,12 +51,7 @@ class AuthorsController extends Zend_Controller_Action
             throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
         }
         
-        $cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
-        $authors = $cmsAuthorsDbTable->search(array(
-           'orders' => array(
-               'order_number' => 'ASC',
-           )
-        ));
+        
         
         $cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
         $author = $cmsAuthorsDbTable->search(array(
@@ -92,20 +70,9 @@ class AuthorsController extends Zend_Controller_Action
 				'short_title' => 'Categories'
 			)
 		));
-		
-		$categoryId = $sitemapPageCategories[0]['id'];
-		$categories = $cmsSitemapPageDbTable->search(array(
-			'filters' => array (
-				'parent_id' => $categoryId
-			),
-			'orders' => array(
-				'order_number' => 'ASC'
-			),
-		));
         
         $this->view->sitemapPage = $sitemapPage;
         $this->view->author = $author;
-		$this->view->categories = $categories;
     }
 }
 

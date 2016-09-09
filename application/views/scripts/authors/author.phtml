@@ -1,0 +1,202 @@
+<?php
+
+$this->headTitle($this->sitemapPage['title'])
+
+?>
+        <main class="bookMain">
+
+            <ol class="breadcrumb text-center">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Authors</a></li>
+                <li><b>Art, Architecture & Photography</b></li>
+            </ol>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col-lg-2 leftArticle">
+                        <article>
+                            <a href="javascript:void(0)"><p class="text-center artArchitecturePhotography">Art, Architecture & Photography<span class="fa fa-cog"></span></p>
+                            </a>
+                            <div class="lists">
+                                <h3 class="text-center">Books by Subject</h3>
+                                <ul class="text-center list-unstyled">
+                                    <?php foreach ($this->categories as $category) {?>
+                                    <li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
+                                    <?php }?>
+                                </ul>
+
+                                <h3 class="text-center">Best Books</h3>
+                                <ul class="text-center list-unstyled">
+                                    <li><a href="#">Art, Architecture & Photo</a></li>
+                                    <li><a href="#">Bibles & Bible Studies</a></li>
+                                    <li><a href="#">Biographies</a></li>
+                                    <li><a href="#">Businiess & Money</a></li>
+                                    <li><a href="#">Children's Books</a></li>
+                                    <li><a href="#">Commputing & Internet</a></li>
+                                    <li><a href="#">Cookbook, Food & Wine</a></li>
+                                    <li><a href="#">Crafts & Hobbies</a></li>
+                                    <li><a href="#">Diet & Health</a></li>
+                                    <li><a href="#">Education & Teaching</a></li>
+                                    <li><a href="#">Fiction & Literature</a></li>
+                                    <li><a href="#">Graphic Novels</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Home & Garden</a></li>
+                                    <li><a href="#">Humor</a></li>                              
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-sm-9 col-lg-10">
+                        <article>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <article>
+                                        <img src="<?php echo $this->authorImgUrl($this->author);?>" class="bigOrangeBook center-block" height="429" width="303">
+                                        <hr>
+                                        <img class="secondImage center-block" src="/front/img/socialNetworks.png">
+
+                                    </article>
+                                </div>
+                                <div class="col-md-6">
+                                    <article>
+
+                                        <div class="inspirationSpeaks">
+                                            <h2><?php echo $this->escape($this->author['name']);?></h2>
+                                            
+                                            <div class="pharagraphas">
+                                            <?php echo $this->escape($this->author['about']);?>    
+                                            </div>
+
+
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </article>
+
+
+                        <div class="smallBooks">
+                            <div class="bestsellers clearfix text-center">
+                                <div class="relatedProducts">
+                                    <h2>Related Products</h2>
+                                </div>
+
+                                <div class="arrowRight">
+                                    <p class="text-center"><a href="#">See all <span class="fa fa-arrow-right"></span></a>  </p>          
+
+                                </div>
+                                <div class="books ">
+
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookBlack.png" class="img-responsive"></a>
+                                        <span class="sale">SALE</span>
+                                    </figure>          
+                                    <h4 class=""><a href="#"><b>Doctor Sleep</a></b></h4>
+                                    <p><span class="by">by</span> Stephen King</p>
+                                    <p class="prise center-block">$14.45<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+
+
+                                <div class="books ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookGreen.png" class="img-responsive"></a>
+                                    </figure>                         
+                                    <h4 class=""><a href="#"><b>Wonder Hardcover</a></b></h4>
+                                    <p><span class="by">by</span> R.J. Palacio</p>
+                                    <p class="prise center-block">$9.59<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+                                <div class="books ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
+                                    </figure>       
+                                    <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
+                                    <p><span class="by">by</span> Cormac McCartny</p>
+                                    <p class="prise center-block">$12.00<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+                                </div>
+                                <div class="books ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookYellow.png" class="img-responsive"></a>
+                                    </figure>                         
+                                    <h4><a href="#">The Brief Wondrous Life of Oscar</a></h4>
+                                    <p><span class="by">by</span> Hezy Theme</p>
+                                    <p class="prise center-block">$7.95<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+
+                                <div class="books lastBook ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img//books/bookOrange.png" class="img-responsive"></a>
+                                    </figure>                         
+                                    <h4 class=""><a href="#">Changeling</a></h4>
+                                    <p><span class="by">by</span> Morgan Gallaghter</p>
+                                    <p class="prise center-block last">$8.45<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+                                <div class="books ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookBlack.png" class="img-responsive"></a>
+                                    </figure>                  
+                                    <h4><a href="#">The Brief Wondrous Life of Oscar Oscar</a></h4>
+                                    <p><span class="by">by</span> Guy Kawasaki</p>
+                                    <p class="prise center-block">$9.59<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+                                </div>
+                                <div class="books ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookGreen.png" class="img-responsive"></a>
+                                    </figure>
+                                    <h4 ><a href="#"><b>Redesign the web Smashing</a></b></h4>
+                                    <p><span class="by">by</span> Gregory Berns</p>
+                                    <p class="prise center-block">$12.00<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+                                <div class="books  wonder ">
+                                    <figure class="center-block">
+                                        <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
+                                    </figure>                         
+                                    <h4 class=""><a href="#"><b>Wonder Hardcover</a></b></h4>
+                                    <p><span class="by">by</span> R.J. Palacio</p>
+                                    <p class="prise center-block">$7.95<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object img-circle" src="/front/img/member2.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><b>Hezy Theme</b> <span class="by">21 Jul, 2105 3:34 pm</span></h4>
+                        <p class="text-justify">I have a jQuery diamond wipe animation plugin that works on much the same principles - just need to find the time to write it up and publish it.Again, the result of a designer making crazy demands, but it's pleasantly surprising how much we can do today, where once all you could say was "I'm sorry.</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object img-circle" src="/front/img/member1.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><b>Kris Morgan</b> <span class="by">21 Jul, 2105 3:34 pm</span></h4>
+                        <p class="text-justify">Again, the result of a designer making crazy demands, but it's pleasantly surprising how much we can do today, where once all you could say was "I'm sorry the web just doesn't work like that..."Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec </p>
+                        <a href="#">Reply</a>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object img-circle" src="/front/img/member2.png">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><b>Arsen Cox</b>  <span class="by">21 Jul, 2105 3:34 pm</span></h4>
+                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, ali</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--******************************************
+        **********************************************
+                        MAIN END
+        *********************************************
+        ******************************************-->
