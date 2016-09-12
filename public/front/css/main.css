@@ -1,14 +1,14 @@
     .top-menu{
     background: #4e7f16;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .top-menu-first{
     font-size: 9px;
     display: none;
 }
 .top-menu-first ul li a{
-    color:#c0c5b8;
+    color:#fff;
     background: url(../img/period.png) no-repeat right center;
     padding-left: 1px;
     padding-right: 20px;
@@ -53,7 +53,7 @@
 }
 .header-middle{
     padding-top: 20px;
-    background: #eaefe1;
+    background: #4e7f16;
     display: none;
 }
 .header-middle .btn-default {
@@ -295,10 +295,9 @@
 }
 .bestsellers h2{
     color: #333333;
-    font-size: 24px;
+    font-size: 33px;
     font-weight: 800;
-    margin-bottom: 70px;
-    margin-top: 50px;
+    margin-top: 5px;
 }
 .bestsellers figure a img{
     transform: scale(1);

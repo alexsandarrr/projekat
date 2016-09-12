@@ -1,6 +1,6 @@
 <?php
 
-class CategoriesController extends Zend_Controller_Action {
+class BookcategoriesController extends Zend_Controller_Action {
     public function indexAction () {
 		
 		$request = $this->getRequest();
@@ -59,7 +59,7 @@ class CategoriesController extends Zend_Controller_Action {
 		$this->view->categories = $categories;
     }
 	
-	public function categoryAction () {
+	public function bookcategoryAction () {
 		$request = $this->getRequest();
 		$sitemapPageId = (int) $request->getParam('sitemap_page_id');
 		if ($sitemapPageId <= 0) {

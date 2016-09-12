@@ -43,8 +43,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				)
 			),
 			
-			'CategoriesPage' => array(
-				'title' => 'Categories Page',
+			'BookCategoriesPage' => array(
+				'title' => 'Book Categories Page',
 				'subtypes' => array(
 					'StaticPage' => 0,
 				)
@@ -52,6 +52,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			
 			'AuthorsPage' => array(
 				'title' => 'Authors Page',
+				'subtypes' => array(
+					
+				)
+			),
+			
+			'ContactPage' => array(
+				'title' => 'Contact Page',
 				'subtypes' => array(
 					
 				)
@@ -64,8 +71,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'AboutPage' => 1,
 			'BooksPage' => 1,
 			'BlogPage' => 1,
-			'CategoriesPage' => 0,
+			'BookCategoriesPage' => 0,
 			'AuthorsPage' => 1,
+			'ContactPage' => 1,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -167,12 +175,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				));
 			}
 			
-			if ($sitemapPageMap['type'] == 'CategoriesPage') {
+			if ($sitemapPageMap['type'] == 'BookCategoriesPage') {
 				
 				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
 					$sitemapPageMap['url'],
 					array(
-						'controller' => 'categories',
+						'controller' => 'bookcategories',
 						'action' => 'index',
 						'sitemap_page_id' => $sitemapPageId
 					)
@@ -181,8 +189,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				$router->addRoute('category-route', new Zend_Controller_Router_Route(
 					$sitemapPageMap['url'] . '/:id/:category_slug',
 					array(
-						'controller' => 'categories',
-						'action' => 'category',
+						'controller' => 'bookcategories',
+						'action' => 'bookcategory',
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));
@@ -207,6 +215,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));
+			}
+				if ($sitemapPageMap['type'] == 'ContactPage') {
+				
+				$router->addRoute('static-page-route', new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'contact',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+            )
+        ));
 			}
 		}
 	}

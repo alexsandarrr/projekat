@@ -7,7 +7,7 @@ class Application_Form_Admin_BookAdd extends Zend_Form
 		$cmsSitemapPagesDbTable = new Application_Model_DbTable_CmsSitemapPages();
 		$sitemapPageCategories = $cmsSitemapPagesDbTable->search(array(
 			'filters' => array (
-				'short_title' => 'Categories'
+				'short_title' => 'Book Categories'
 			)
 		));
 		$categoriesId = $sitemapPageCategories[0]['id'];

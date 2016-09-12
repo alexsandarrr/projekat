@@ -9,7 +9,7 @@ $this->headMeta()->appendName('description', $this->photoGallery['description'])
 
 		<main>
             <ol class="breadcrumb text-center blogPostBorder">
-                <li><a href="#">Home</a></li>
+                <li><a href="<?php echo $this->url(array('controller' => 'index'), 'default', true);?>">Home</a></li>
                 <li><b>Photos</b></li>
             </ol>
 
@@ -17,7 +17,7 @@ $this->headMeta()->appendName('description', $this->photoGallery['description'])
                 <div class="row">
                     <div class="col-sm-12">
 						<?php foreach($this->photos as $photo) {;?>
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 						<div class="blogLists spacing">                          
 							<a href="<?php echo $this->Url($photo);?>" blog-img><img src="<?php echo $this->photoUrl($photo);?>" alt="" class="center-block img-responsive"/></a>
 							

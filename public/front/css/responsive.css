@@ -454,7 +454,7 @@
     }
     .menu ul li a{
         background: none !important;
-        color:#333333;
+        color: #fff;
         background: url(../img/ellipse.png) no-repeat right center !important;
         padding-left: 30px;
         padding-right: 30px;
@@ -462,7 +462,7 @@
     }
     .menu ul li a:hover{
         background: none !important;
-        color:green;
+        color:000;
         background: url(../img/ellipse.png) no-repeat right center !important;
         padding-left: 30px;
         padding-right: 30px;
