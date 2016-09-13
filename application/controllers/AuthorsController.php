@@ -70,9 +70,16 @@ class AuthorsController extends Zend_Controller_Action
 				'short_title' => 'Categories'
 			)
 		));
+		
+		$authors = $cmsAuthorsDbTable->search(array(
+			'orders' => array(
+				'order_number' => 'ASC',
+			))
+		);
         
         $this->view->sitemapPage = $sitemapPage;
         $this->view->author = $author;
+		$this->view->authors = $authors;
     }
 }
 
