@@ -22,28 +22,30 @@ class BookcategoriesController extends Zend_Controller_Action {
 
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
-				'id' => $sitemapPageId
+				'id' => $sitemapPageId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			)
 		));
                 
 		$categoryId = $sitemapPageCategories[0]['id'];
 		$categories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
-				'parent_id' => $categoryId
+				'parent_id' => $categoryId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
 		));
-//print_r($categories);
-//die();
+		
 		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
 		$books = array();
 		if (count($categories) > 0) {
 			foreach ($categories as $category) {
 				$books[$category['id']] = $cmsBooksDbTable->search(array(
 					'filters' => array(
-						'category_id' => $category['id']
+						'category_id' => $category['id'],
+						'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED
 					),
 					'orders' => array(
 						'order_number' => 'ASC',
@@ -80,6 +82,7 @@ class BookcategoriesController extends Zend_Controller_Action {
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
 				'id' => $sitemapPageId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			)
 		));
 		
@@ -89,6 +92,7 @@ class BookcategoriesController extends Zend_Controller_Action {
 			'filters' => array(
 				'id' => $id,
 				'parent_id' => $categoryId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 				
 			),
 			'orders' => array(
@@ -102,7 +106,8 @@ class BookcategoriesController extends Zend_Controller_Action {
 		$books = array();
 				$books[$category['id']] = $cmsBooksDbTable->search(array(
 					'filters' => array(
-						'category_id' => $category['id']
+						'category_id' => $category['id'],
+						'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED
 					),
 					'orders' => array(
 						'order_number' => 'ASC',

@@ -22,6 +22,9 @@ class AuthorsController extends Zend_Controller_Action
 		
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
         $authors = $cmsAuthorsDbTable->search(array(
+			'filters' => array(
+			'status' => Application_Model_DbTable_CmsAuthors::STATUS_ENABLED
+			),
            'orders' => array(
                'order_number' => 'ASC',
            ),
@@ -57,6 +60,7 @@ class AuthorsController extends Zend_Controller_Action
         $author = $cmsAuthorsDbTable->search(array(
            'filters' => array(
                 'id' => $authorId,
+			   'status' => Application_Model_DbTable_CmsAuthors::STATUS_ENABLED
             ),
            'orders' => array(
                'order_number' => 'ASC',
@@ -67,11 +71,15 @@ class AuthorsController extends Zend_Controller_Action
 		
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array (
-				'short_title' => 'Categories'
+				'short_title' => 'Categories',
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			)
 		));
 		
 		$authors = $cmsAuthorsDbTable->search(array(
+			'filters' => array(
+				'status' => Application_Model_DbTable_CmsAuthors::STATUS_ENABLED	
+			),
 			'orders' => array(
 				'order_number' => 'ASC',
 			))

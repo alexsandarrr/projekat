@@ -63,6 +63,7 @@ class BooksController extends Zend_Controller_Action {
 		$book = $cmsBooksDbTable->search(array(
 			'filters' => array(
 				'id' => $bookId,
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED
 			),
 			'orders' => array(
 				'order_number' => 'ASC',
@@ -73,14 +74,16 @@ class BooksController extends Zend_Controller_Action {
 
 		$sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
-				'short_title' => 'Book Categories'
+				'short_title' => 'Book Categories',
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			)
 		));
 
 		$categoryId = $sitemapPageCategories[0]['id'];
 		$categories = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
-				'parent_id' => $categoryId
+				'parent_id' => $categoryId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
 			),
 			'orders' => array(
 				'order_number' => 'ASC'
@@ -90,7 +93,8 @@ class BooksController extends Zend_Controller_Action {
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 		$author = $cmsAuthorsDbTable->search(array(
 		   'filters' => array(
-			   'id' => $book['author_id']
+			   'id' => $book['author_id'],
+				'status' => Application_Model_DbTable_CmsAuthors::STATUS_ENABLED
 		   ), 
 		));
 		$author = $author[0];

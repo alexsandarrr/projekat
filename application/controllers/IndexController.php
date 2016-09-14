@@ -20,8 +20,20 @@ class IndexController extends Zend_Controller_Action
                         'order_number' => 'ASC'
                 )
         ));
+		
+		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+		$books = $cmsBooksDbTable->search(array(
+			'filters' => array(
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+			),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+			'limit' => 4,
+		));
 
         $this->view->indexSlides = $indexSlides;
+		$this->view->books = $books;
     }
 }
 

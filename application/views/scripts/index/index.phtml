@@ -87,51 +87,19 @@
              ******************************************-->
             <div class="container">
                 <div class="bestsellers clearfix text-center">
-                    <h2>Bestsellers</h2>
-                    <div class="books">
+                    <h2>Books</h2>
+					<?php foreach($this->books as $book) { ?>
+					<div class="books">
                         <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                            <span class="sale">SALE</span>
+                            <a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive"></a>
                         </figure>                  
-                        <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
+                        <h4><a href="<?php echo $this->bookUrl($book);?>"><?php echo $this->escape($book['title']);?></a></h4>
                         <p><span class="by">by</span> Cormac McCartny</p>
-                        <p class="prise center-block">$1,401.75<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+                        <p class="prise center-block"><?php echo $this->escape($book['price']);?><!--<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
                     </div>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                        </figure>
-                        <h4 class="down"><b><a href="#">Doctor Sleep</a></b></h4>
-                        <p><span class="by">by</span> Stephen King</p>
-                        <p class="prise center-block">$1,401.75<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                    </div>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookYellow.png" class="img-responsivek"></a>
-                        </figure>                         
-                        <h4 class="down"><b><a href="#">Wonder Hardcover</a></b></h4>
-                        <p><span class="by">by</span> R.J. Palacio</p>
-                        <p class="prise center-block">$1,401.75<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                    </div>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                        </figure>                         
-                        <h4><a href="#">The Brief Wondrous Life of Oscar</a></h4>
-                        <p><span class="by">by</span> Hezy Theme</p>
-                        <p class="prise center-block">$1,401.75<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                    </div>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                        </figure>                         
-                        <h4 class=""><a href="#">How Dogs Love Us: A Neuroscientist and His Dog</a> </h4>
-                        <p><span class="by">by</span> Georgy Berns</p>
-                        <p class="prise center-block last">$1,401.75<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                    </div>
-
+					<?php }?>
                 </div>  
-                <p class="text-center"> <a href="#" class="viewMore">VIEW MORE</a></p>
+                <p class="text-center"> <a href="<?php echo $this->sitemapPageUrl('2');?>" class="viewMore">VIEW MORE</a></p>
             </div>
             <!--******************************************
                              MAIN BESTSELLERS END
@@ -191,26 +159,13 @@
                 <div class="container">
                     <h2 class="text-center">Latest product</h2>
                     <div class="row">
+						<?php foreach($this->books as $book) { ?>
                         <div class="col-sm-3">
                             <article>
-                                <a href="#"><img src="/front/img/books/latest1.png" class="img-responsive center-block"></a>
+                                <a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive center-block"></a>
                             </article>
                         </div>
-                        <div class="col-sm-3">
-                            <article>
-                                <a href="#"><img src="/front/img/books/latest2.png" class="img-responsive center-block"></a>
-                            </article>
-                        </div>
-                        <div class="col-sm-3">
-                            <article>
-                                <a href="#"><img src="/front/img/books/latest1.png" class="img-responsive center-block"></a>
-                            </article>
-                        </div>
-                        <div class="col-sm-3">
-                            <article>
-                                <a href="#"><img src="/front/img/books/latest2.png" class="img-responsive center-block"></a>
-                            </article>
-                        </div>
+						<?php }?>
                     </div>
                 </div>
             </div>
@@ -330,7 +285,7 @@
             <!--******************************************
                            MAIN BOXES START
             ******************************************-->
-            <div class="boxes">
+<!--            <div class="boxes">
                 <div class="container">
                     <div class="row text-center block-center">
                         <div class="col-sm-4">
@@ -365,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!--******************************************
                              MAIN BOXES END
               ******************************************-->
@@ -375,7 +330,7 @@
             <!--******************************************
                            MAIN FROMBLOG START
             ******************************************-->
-            <div class="fromBlog">
+<!--            <div class="fromBlog">
                 <div class="container">
                     <h2 class="text-center">From the blog</h2>
                     <div class="row">
@@ -415,7 +370,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div> -->
             <!--******************************************
                              MAIN FROMBLOG END
               ******************************************-->      
