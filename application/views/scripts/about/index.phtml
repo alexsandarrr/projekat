@@ -1,4 +1,7 @@
 <?php
 echo $this->headTitle($this->sitemapPage['title']);
+?>
+<main>			
+<?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);
 
 echo $this->sitemapPage['body'];

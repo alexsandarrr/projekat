@@ -1,15 +1,11 @@
 <?php
 
-$this->headTitle($this->sitemapPage['title'])
+$this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
 
 ?>
         <main class="bookMain">
-
-            <ol class="breadcrumb text-center">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Books</a></li>
-                <li><b>Art, Architecture & Photography</b></li>
-            </ol>
+			
+		<?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);?>
 
             <div class="container">
                 <div class="row">
@@ -23,25 +19,6 @@ $this->headTitle($this->sitemapPage['title'])
                                     <?php foreach ($this->categories as $category) {?>
                                     <li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
                                     <?php }?>
-                                </ul>
-
-                                <h3 class="text-center">Best Books</h3>
-                                <ul class="text-center list-unstyled">
-                                    <li><a href="#">Art, Architecture & Photo</a></li>
-                                    <li><a href="#">Bibles & Bible Studies</a></li>
-                                    <li><a href="#">Biographies</a></li>
-                                    <li><a href="#">Businiess & Money</a></li>
-                                    <li><a href="#">Children's Books</a></li>
-                                    <li><a href="#">Commputing & Internet</a></li>
-                                    <li><a href="#">Cookbook, Food & Wine</a></li>
-                                    <li><a href="#">Crafts & Hobbies</a></li>
-                                    <li><a href="#">Diet & Health</a></li>
-                                    <li><a href="#">Education & Teaching</a></li>
-                                    <li><a href="#">Fiction & Literature</a></li>
-                                    <li><a href="#">Graphic Novels</a></li>
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">Home & Garden</a></li>
-                                    <li><a href="#">Humor</a></li>                              
                                 </ul>
                             </div>
                         </article>
@@ -66,7 +43,7 @@ $this->headTitle($this->sitemapPage['title'])
                                             <p class="palacio"><span class="by">by</span> <a href="#"><strong><em><?php echo $this->escape($this->author['name']);?></em></strong></a></p>
                                             <div class="clearfix addToCart">
                                                 <p class="number pull-left"><?php echo $this->escape($this->book['price']);?></p>
-                                                <p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>
+                                                <!--<p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>-->
                                             </div>
                                             <div class="pharagraphas">
                                             <?php echo $this->escape($this->book['about']);?>    
@@ -166,7 +143,7 @@ $this->headTitle($this->sitemapPage['title'])
 
 
                 </div>
-                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
+<!--                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object img-circle" src="/front/img/member2.png">
@@ -196,7 +173,7 @@ $this->headTitle($this->sitemapPage['title'])
                         <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, ali</p>
                         <a href="#">Reply</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </main>
         <!--******************************************

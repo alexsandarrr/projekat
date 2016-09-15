@@ -115,9 +115,6 @@ class BookcategoriesController extends Zend_Controller_Action {
 				));
 				
 		$books = $books[$category['id']];
-				
-//		print_r($category);
-//		die();
 		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;

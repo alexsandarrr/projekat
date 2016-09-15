@@ -1,15 +1,11 @@
 <?php
 
-$this->headTitle($this->sitemapPage['title'])
+$this->headTitle($this->author['name'] . ' | ' . $this->sitemapPage['title'])
 
 ?>
         <main class="bookMain">
 
-            <ol class="breadcrumb text-center">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Authors</a></li>
-                <li><b>Art, Architecture & Photography</b></li>
-            </ol>
+        <?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);?>
 
             <div class="container">
                 <div class="row">
@@ -143,7 +139,7 @@ $this->headTitle($this->sitemapPage['title'])
 
 
                 </div>
-                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
+<!--                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object img-circle" src="/front/img/member2.png">
@@ -173,7 +169,7 @@ $this->headTitle($this->sitemapPage['title'])
                         <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, ali</p>
                         <a href="#">Reply</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </main>
         <!--******************************************

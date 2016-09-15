@@ -5,11 +5,8 @@ $books = $this->books;
 
 ?>
         <main class="bookMain">
-
-            <ol class="breadcrumb text-center">
-                <li><a href="#">Home</a></li>
-                <li><b>Books</b></li>
-            </ol>
+			
+		<?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);?>
             <!--******************************************
                             MAIN BESTSELLERS START
              ******************************************-->

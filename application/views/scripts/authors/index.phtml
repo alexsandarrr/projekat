@@ -4,11 +4,10 @@ $this->headTitle($this->sitemapPage['title']);
 
 ?>
         <main class="bookMain">
-
-            <ol class="breadcrumb text-center">
-                <li><a href="#">Home</a></li>
-                <li><b>Authors</b></li>
-            </ol>
+			
+			
+		<?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);?>
+            
 
             <!--******************************************
                      MAIN PRODUCTS-SORTING START

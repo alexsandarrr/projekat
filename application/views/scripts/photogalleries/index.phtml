@@ -8,10 +8,8 @@ $this->headMeta()->appendName('description', $this->sitemapPage['description']);
                         MAIN START
         *******************************************-->
         <main>
-            <ol class="breadcrumb text-center blogPostBorder">
-                <li><a href="#">Home</a></li>
-                <li><b>Galleries</b></li>
-            </ol>
+			
+		<?php echo $this->breadCrumbsHtml($this->sitemapPage['id']);?>
 
             <div class="container">
                 <div class="row">
