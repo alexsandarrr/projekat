@@ -63,6 +63,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					
 				)
 			),
+			
+			'ServicesPage' => array(
+				'title' => 'Services Page',
+				'subtypes' => array(
+					
+				)
+			),
 		);
 		
 		$rootSitemapPageTypes = array(
@@ -71,9 +78,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'AboutPage' => 1,
 			'BooksPage' => 1,
 			'BlogPage' => 1,
-			'BookCategoriesPage' => 0,
+			'BookCategoriesPage' => 1,
 			'AuthorsPage' => 1,
 			'ContactPage' => 1,
+			'ServicesPage' => 1,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -216,7 +224,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					)
 				));
 			}
-				if ($sitemapPageMap['type'] == 'ContactPage') {
+			
+			if ($sitemapPageMap['type'] == 'ContactPage') {
 				
 				$router->addRoute('static-page-route', new Zend_Controller_Router_Route_Static(
 					$sitemapPageMap['url'],
@@ -224,8 +233,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						'controller' => 'contact',
 						'action' => 'index',
 						'sitemap_page_id' => $sitemapPageId
-            )
-        ));
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'ServicesPage') {
+				
+				$router->addRoute('static-page-route', new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'services',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
 			}
 		}
 	}
