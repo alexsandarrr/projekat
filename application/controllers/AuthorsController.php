@@ -84,10 +84,21 @@ class AuthorsController extends Zend_Controller_Action
 				'order_number' => 'ASC',
 			))
 		);
+		
+		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+		$relatedBooks = $cmsBooksDbTable->search(array(
+			'filters' => array(
+				'author_id' => $author['id'],
+			),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
         
         $this->view->sitemapPage = $sitemapPage;
         $this->view->author = $author;
 		$this->view->authors = $authors;
+		$this->view->relatedBooks =$relatedBooks;
     }
 }
 

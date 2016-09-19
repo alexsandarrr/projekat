@@ -4,6 +4,7 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
 {
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
+	const ON_SALE = 1;
     
     protected $_name = 'cms_books';
     
@@ -163,6 +164,8 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
                     case 'author_id':
                     case 'order_number':
                     case 'status':
+					case 'sale':
+					case 'date_added':
                         if ($orderDirection === 'DESC') {
                             $select->order($field . ' DESC');
                         } else {
@@ -234,6 +237,8 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
 				case 'author_id':
 				case 'order_number':
 				case 'status':
+				case 'sale':
+				case 'date_added':
                     if (is_array($value)) {
                         $select->where($field . ' IN (?)', $value);
                     } else {
@@ -247,6 +252,10 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
 
                 case 'isbn_search':
                     $select->where('isbn LIKE ?', '%' . $value . '%');
+                    break;
+				
+				case 'date_added_search':
+                    $select->where('date_added LIKE ?', '%' . $value . '%');
                     break;
 				
                 case 'id_exclude':

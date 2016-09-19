@@ -69,6 +69,10 @@ class Application_Form_Admin_BookAdd extends Zend_Form
                 ->setRequired(true);
         $this->addElement($price);
 		
+		$sale = new Zend_Form_Element_Checkbox('sale');
+		$sale->setRequired(false);
+		$this->addElement($sale);
+		
 		$categoryId = new Zend_Form_Element_Select('category_id');
 		$categoryId->addMultiOption('', '-- Select Category --')
                 ->setRequired(true);

@@ -56,83 +56,35 @@ $this->headTitle($this->author['name'] . ' | ' . $this->sitemapPage['title'])
                         <div class="smallBooks">
                             <div class="bestsellers clearfix text-center">
                                 <div class="relatedProducts">
-                                    <h2>Related Products</h2>
+                                    <h2>Books Of This Author</h2>
                                 </div>
-
                                 <div class="arrowRight">
-                                    <p class="text-center"><a href="#">See all <span class="fa fa-arrow-right"></span></a>  </p>          
-
                                 </div>
-                                <div class="books ">
-
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookBlack.png" class="img-responsive"></a>
-                                        <span class="sale">SALE</span>
-                                    </figure>          
-                                    <h4 class=""><a href="#"><b>Doctor Sleep</a></b></h4>
-                                    <p><span class="by">by</span> Stephen King</p>
-                                    <p class="prise center-block">$14.45<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-
-
-                                <div class="books ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookGreen.png" class="img-responsive"></a>
-                                    </figure>                         
-                                    <h4 class=""><a href="#"><b>Wonder Hardcover</a></b></h4>
-                                    <p><span class="by">by</span> R.J. Palacio</p>
-                                    <p class="prise center-block">$9.59<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-                                <div class="books ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                                    </figure>       
-                                    <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
-                                    <p><span class="by">by</span> Cormac McCartny</p>
-                                    <p class="prise center-block">$12.00<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
-                                </div>
-                                <div class="books ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookYellow.png" class="img-responsive"></a>
-                                    </figure>                         
-                                    <h4><a href="#">The Brief Wondrous Life of Oscar</a></h4>
-                                    <p><span class="by">by</span> Hezy Theme</p>
-                                    <p class="prise center-block">$7.95<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-
-                                <div class="books lastBook ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img//books/bookOrange.png" class="img-responsive"></a>
-                                    </figure>                         
-                                    <h4 class=""><a href="#">Changeling</a></h4>
-                                    <p><span class="by">by</span> Morgan Gallaghter</p>
-                                    <p class="prise center-block last">$8.45<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-                                <div class="books ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookBlack.png" class="img-responsive"></a>
-                                    </figure>                  
-                                    <h4><a href="#">The Brief Wondrous Life of Oscar Oscar</a></h4>
-                                    <p><span class="by">by</span> Guy Kawasaki</p>
-                                    <p class="prise center-block">$9.59<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
-                                </div>
-                                <div class="books ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookGreen.png" class="img-responsive"></a>
-                                    </figure>
-                                    <h4 ><a href="#"><b>Redesign the web Smashing</a></b></h4>
-                                    <p><span class="by">by</span> Gregory Berns</p>
-                                    <p class="prise center-block">$12.00<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-                                <div class="books  wonder ">
-                                    <figure class="center-block">
-                                        <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                                    </figure>                         
-                                    <h4 class=""><a href="#"><b>Wonder Hardcover</a></b></h4>
-                                    <p><span class="by">by</span> R.J. Palacio</p>
-                                    <p class="prise center-block">$7.95<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket""></span></span></a></p>
-                                </div>
-
+                                <?php
+								foreach ($this->relatedBooks as $book) {
+									if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {
+										?>
+										<div class="books">
+											<figure class="center-block">
+												<a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
+												<span class="sale">SALE</span>
+											</figure>
+											<h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
+											<p><span class="by">by</span> Stephen King</p>
+											<p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+										</div>
+										<?php } else {
+										?>
+										<div class="books">
+											<figure class="center-block">
+												<a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
+											</figure>
+											<h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
+											<p><span class="by">by</span> Stephen King</p>
+											<p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+										</div>
+									<?php }
+								} ?>
                             </div>
                         </div>
                     </div>

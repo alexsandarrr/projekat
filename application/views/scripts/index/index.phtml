@@ -50,30 +50,30 @@
             <div class="container">
                 <div class="banners">
                     <div class="row">
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-6 text-center">
                             <article>
                                 <div class="bannerContent">
-                                    <a href="#">SHOP SALE</a>
+                                    <a href="<?php echo $this->sitemapPageUrl('15');?>"><?php echo $this->sitemapPageShortTitle('15');?></a>
                                     <p>The sale don't stop up to 75% off!</p>
                                 </div>
                             </article>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-6 text-center">
                             <article>
                                 <div class="bannerContent">
-                                    <a href="#">LATEST PRODUCT</a>
+                                    <a href="<?php echo $this->sitemapPageUrl('14');?>"><?php echo $this->sitemapPageShortTitle('14');?></a>
                                     <p>New arrivals</p>
                                 </div>
                             </article>
                         </div>
-                        <div class="col-md-4 text-center">
+<!--                        <div class="col-md-4 text-center">
                             <article>
                                 <div class="bannerContent">
                                     <a href="#">READ THE BLOG</a>
                                     <p>Latest hot news</p>
                                 </div>
                             </article>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -92,6 +92,9 @@
 					<div class="books">
                         <figure class="center-block">
                             <a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive"></a>
+							<?php if($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+								<span class="sale">SALE</span>
+							<?php }?>
                         </figure>                  
                         <h4><a href="<?php echo $this->bookUrl($book);?>"><?php echo $this->escape($book['title']);?></a></h4>
                         <p><span class="by">by</span> Cormac McCartny</p>
@@ -157,12 +160,15 @@
               ******************************************-->
             <div class="latestProduct">
                 <div class="container">
-                    <h2 class="text-center">Latest product</h2>
+                    <h2 class="text-center">Latest products</h2>
                     <div class="row">
-						<?php foreach($this->books as $book) { ?>
+						<?php foreach($this->shelfBooks as $book) { ?>
                         <div class="col-sm-3">
                             <article>
                                 <a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive center-block"></a>
+								<?php if($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+									<span class="sale">SALE</span>
+								<?php }?>
                             </article>
                         </div>
 						<?php }?>
@@ -181,7 +187,7 @@
             <div class="text">
                 <div class="container">
                     <h1 class="text-center">
-                        We Empower WordPress Developers With Design-Driven Themes And A Classy Experience Their Clients Will Just Love
+                        Services
                     </h1>
                 </div>            
             </div>
@@ -197,82 +203,26 @@
             <div class="features" id="Services">
                 <div class="container">
                     <div class="row">
+						<?php foreach ($this->services as $service) {?>
                         <div class=" col-md-6 content">
                             <article class="borderGray">
                                 <div class="row ">
                                     <div class=" col-sm-9 ">
                                         <article class="singleJob">
-                                            <h4 class="text-uppercase">Post-ironic sweater</h4>
-                                            <p>Vinyl carles 3 wolf moon put a bird on it post ironic  authentic single-origin coffee quinoa chillwave. Irony fingerstache thundercats.</p>
-                                            <a href="#">FIND OUT MORE <span class="fa fa-arrow-right"></span></a>
+                                            <h4 class="text-uppercase"><?php echo $this->escape($service['title']);?></h4>
+                                            <p><?php echo $this->escape($service['description']);?></p>
+                                            <!--<a href="#">FIND OUT MORE <span class="fa fa-arrow-right"></span></a>-->
                                         </article>
                                     </div>
                                     <div class=" col-sm-3 text-center">
                                         <article class="boxCircle">
-                                            <span class="fa fa-eye"></span>
-                                        </article>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>                
-                        <div class=" col-md-6 content">
-                            <article class="borderGray">
-                                <div class="row ">
-                                    <div class=" col-sm-9">
-                                        <article class="singleJob">
-                                            <h4 class="text-uppercase">Lorem ipsum</h4>
-                                            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
-                                            <a href="#">FIND OUT MORE  <span class="fa fa-arrow-right"></span></a>
-                                        </article>
-                                    </div>
-                                    <div class=" col-sm-3 text-center">
-                                        <article class="boxCircle">
-                                            <span class="fa fa-mobile"></span>
-                                        </article>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>               
-                        <div class=" col-md-6 content">
-                            <article class="borderGray">
-                                <div class="row ">
-                                    <div class=" col-sm-9">
-                                        <article class="singleJob">
-                                            <h4 class="text-uppercase">Brunch vegan 8-bit</h4>
-                                            <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac.</p>
-                                            <a href="#">FIND OUT MORE  <span class="fa fa-arrow-right"></span></a>
-                                        </article>
-                                    </div>
-                                    <div class=" col-sm-3 text-center">
-                                        <article class="boxCircle">
-                                            <span class="fa fa-lightbulb-o"></span>
-                                        </article>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class=" col-md-6 content">
-                            <article class="borderGray">
-                                <div class="row ">
-                                    <div class=" col-sm-9">
-                                        <article class="singleJob">
-                                            <h4 class="text-uppercase">Donec pade justo</h4>
-                                            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                                            <a href="#">FIND OUT MORE  <span class="fa fa-arrow-right"></span></a>
-                                        </article>
-                                    </div>
-                                    <div class=" col-sm-3 text-center">
-                                        <article class="boxCircle">
-                                            <span class="fa fa-pencil-square-o"></span>
+                                            <span class="<?php echo $this->escape($service['icon']);?>"></span>
                                         </article>
                                     </div>
                                 </div>
                             </article>
                         </div>
+						<?php }?>
                     </div>
                 </div>
             </div>

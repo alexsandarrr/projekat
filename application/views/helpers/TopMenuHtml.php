@@ -44,10 +44,9 @@ class Zend_View_Helper_TopMenuHtml extends Zend_View_Helper_Abstract
 							</a>
 						<ul class="dropdown-menu">
 							<?php foreach($childElements as $childElement) {?>
-							
-							<li>
-							<a href="<?php echo $this->view->sitemapPageUrl($childElement['id']);?>"><?php echo $this->view->escape($childElement['short_title']);?></a>
-							</li>
+									<li>
+										<a href="<?php echo $this->view->sitemapPageUrl($childElement['id']);?>"><?php echo $this->view->escape($childElement['short_title']);?></a>
+									</li>
 							<?php }?>
 						</ul>
                 </li>

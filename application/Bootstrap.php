@@ -70,6 +70,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					
 				)
 			),
+			
+			'LatestBooksPage' => array(
+				'title' => 'Latest Books Page',
+				'subtypes' => array(
+					
+				)
+			),
+			
+			'BooksOnSalePage' => array(
+				'title' => 'Books On Sale Page',
+				'subtypes' => array(
+					
+				)
+			),
 		);
 		
 		$rootSitemapPageTypes = array(
@@ -82,6 +96,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'AuthorsPage' => 1,
 			'ContactPage' => 1,
 			'ServicesPage' => 1,
+			'LatestBooksPage' => 1,
+			'BooksOnSalePage' => 1,
 		);
 		
 		Zend_Registry::set('sitemapPageTypes', $sitemapPageTypes);
@@ -227,7 +243,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			
 			if ($sitemapPageMap['type'] == 'ContactPage') {
 				
-				$router->addRoute('static-page-route', new Zend_Controller_Router_Route_Static(
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
 					$sitemapPageMap['url'],
 					array(
 						'controller' => 'contact',
@@ -239,10 +255,43 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			
 			if ($sitemapPageMap['type'] == 'ServicesPage') {
 				
-				$router->addRoute('static-page-route', new Zend_Controller_Router_Route_Static(
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
 					$sitemapPageMap['url'],
 					array(
 						'controller' => 'services',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+				
+				$router->addRoute('service-route-' . $sitemapPageId, new Zend_Controller_Router_Route(
+					$sitemapPageMap['url'] . '/:id/:service_slug',
+					array(
+						'controller' => 'services',
+						'action' => 'service',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'LatestBooksPage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'latestbooks',
+						'action' => 'index',
+						'sitemap_page_id' => $sitemapPageId
+					)
+				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'BooksOnSalePage') {
+				
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
+					array(
+						'controller' => 'booksonsale',
 						'action' => 'index',
 						'sitemap_page_id' => $sitemapPageId
 					)

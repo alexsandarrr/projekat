@@ -30,11 +30,9 @@ class BooksController extends Zend_Controller_Action {
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
-			'limit' => 20
+			'limit' => 50
 		));
 		
-		
-
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
 	}
@@ -98,11 +96,21 @@ class BooksController extends Zend_Controller_Action {
 		   ), 
 		));
 		$author = $author[0];
-
+		
+		$relatedBooks = $cmsBooksDbTable->search(array(
+			'filters' => array(
+				'author_id' => $author['id'],
+			),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
+		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->book = $book;
 		$this->view->categories = $categories;
         $this->view->author = $author;
+		$this->view->relatedBooks = $relatedBooks;
 	}
 
 }

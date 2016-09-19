@@ -180,6 +180,29 @@ $form->setElementDecorators(array('ViewHelper'));
                             </div>
                         </div>
 						
+						<div class="form-group">
+                            <label class="col-md-4 control-label" for="sale">On Sale</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('sale')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'On Sale?',
+                                    'id' => 'sale',
+                                ));
+                                ?>
+                                <span class="help-block"></span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('sale')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('sale')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+						
                         <div class="form-group">
                                 <label class="col-md-4 control-label" for="category_id">Category</label>  
                                 <div class="col-md-4">
