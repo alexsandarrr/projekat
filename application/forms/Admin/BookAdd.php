@@ -23,11 +23,8 @@ class Application_Form_Admin_BookAdd extends Zend_Form
 		$cmsCoversDbTable = new Application_Model_DbTable_CmsCovers();
 		$covers = $cmsCoversDbTable->search();
 		
-		$cmsLettersDbTable = new Application_Model_DbTable_CmsLetters();
-		$letters = $cmsLettersDbTable->search();
-		
-//		print_r($authors);
-//		die();
+		$cmsLanguagesDbTable = new Application_Model_DbTable_CmsLanguages();
+		$languages = $cmsLanguagesDbTable->search();
 		
         $title = new Zend_Form_Element_Text('title');
         $title->addFilter('StringTrim')
@@ -103,15 +100,15 @@ class Application_Form_Admin_BookAdd extends Zend_Form
 		
 		$this->addElement($coverId);
 		
-		$letterId = new Zend_Form_Element_Select('letter_id');
-		$letterId->addMultiOption('', '-- Select Letter --')
+		$languageId = new Zend_Form_Element_Select('language_id');
+		$languageId->addMultiOption('', '-- Select Language --')
                 ->setRequired(true);
 		
-		foreach ($letters as $letter) {
-			$letterId->addMultiOption($letter['id'], $letter['title']);
+		foreach ($languages as $language) {
+			$languageId->addMultiOption($language['id'], $language['title']);
 		}
 		
-		$this->addElement($letterId);
+		$this->addElement($languageId);
         
         $bookPhoto = new Zend_Form_Element_File('book_photo');
         $bookPhoto->addValidator('Count', true, 1)

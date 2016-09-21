@@ -1,0 +1,76 @@
+<?php
+
+$this->headTitle('Covers - Edit Cover');
+
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
+
+?>
+<div class="page-header">
+    <h1>Covers <small>Edit Cover</small></h1>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <?php echo $this->systemMessagesHtml($this->systemMessages); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="coll-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading text-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a 
+                        href="<?php echo $this->url(array('controller' => 'admin_covers', 'action' => 'index'), 'default', true) ?>" 
+                        class="btn btn-default"
+                        ><i class="glyphicon glyphicon-arrow-left"></i> Back to all covers</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" action="">
+                    <input type="hidden" name="task" value="update">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Edit Cover - <?php echo $this->escape($this->cover['title']);?></legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="title">Title</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('title')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter title of new cover',
+                                    'id' => 'title',
+                                    'required' => 'required'
+                                ));
+                                ?>
+                                <span class="help-block">min 2 max 255 characters</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('title')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('title')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="new_cover_cancel"></label>
+                            <div class="col-md-8">
+                                <a href="<?php echo $this->url(array('controller' => 'admin_covers', 'action' => 'index'), 'default', true);?>" 
+                                   id="new_member_cancel" name="new_cover_cancel" class="btn btn-default">Cancel</a>
+                                <button type=submit" id="new_member_submit" name="new_cover_submit" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

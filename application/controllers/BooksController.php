@@ -20,8 +20,6 @@ class BooksController extends Zend_Controller_Action {
 			throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
 		}
 
-	
-
 		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
 		$books = $cmsBooksDbTable->search(array(
 			'filters' => array(
@@ -33,8 +31,20 @@ class BooksController extends Zend_Controller_Action {
 			'limit' => 50
 		));
 		
+		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
+		$authors = $cmsAuthorsDbTable->search(array(
+			'filters' => array(
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+				),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
+		
+		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
+		$this->view->authors = $authors;
 	}
 
 	public function bookAction() {

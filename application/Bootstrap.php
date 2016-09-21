@@ -47,6 +47,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				'title' => 'Book Categories Page',
 				'subtypes' => array(
 					'StaticPage' => 0,
+					'BookCategoryPage' => 0,
+				)
+			),
+			'BookCategoryPage' => array(
+				'title' => 'Book Category Page',
+				'subtypes' => array(
+					
 				)
 			),
 			
@@ -209,9 +216,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						'sitemap_page_id' => $sitemapPageId
 					)
 				));
+			}
+			
+			if ($sitemapPageMap['type'] == 'BookCategoryPage') {
 				
-				$router->addRoute('category-route', new Zend_Controller_Router_Route(
-					$sitemapPageMap['url'] . '/:id/:category_slug',
+				$router->addRoute('static-page-route-' . $sitemapPageId, new Zend_Controller_Router_Route_Static(
+					$sitemapPageMap['url'],
 					array(
 						'controller' => 'bookcategories',
 						'action' => 'bookcategory',

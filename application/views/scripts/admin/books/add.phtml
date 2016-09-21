@@ -270,20 +270,20 @@ $form->setElementDecorators(array('ViewHelper'));
 						</div>
 						
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="letter_id">Letter</label>  
+							<label class="col-md-4 control-label" for="language_id">Language</label>  
 							<div class="col-md-4">
 								<?php 
-								echo $form->getElement('letter_id')->setAttribs(array(
+								echo $form->getElement('language_id')->setAttribs(array(
 									'class' => 'form-control input-md',
-									'id' => 'letter_id',
+									'id' => 'language_id',
 									'required' => 'required',
 								));
 								?>
 							</div>
 							<div class="col-md-4">
-								<?php if ($form->getElement('letter_id')->hasErrors()) {?>
+								<?php if ($form->getElement('language_id')->hasErrors()) {?>
 								<div class="has-error">
-									<?php foreach ($form->getElement('letter_id')->getMessages() as $message) {?>
+									<?php foreach ($form->getElement('language_id')->getMessages() as $message) {?>
 									<p class="help-block"><?php echo $this->escape($message);?></p>
 									<?php }?>
 								</div>

@@ -1,17 +1,17 @@
 <?php
 
-class Application_Model_DbTable_CmsLetters extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_CmsLanguages extends Zend_Db_Table_Abstract
 {
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
     
-    protected $_name = 'cms_letters';
+    protected $_name = 'cms_languages';
     
     /** 
      * @param int $id
-     * @return null|array Associative array with keys as cms_letters table columns or NULL if not found
+     * @return null|array Associative array with keys as cms_languages table columns or NULL if not found
      */
-    public function getLetterById ($id) {
+    public function getLanguageById ($id) {
         
         $select = $this->select();
         $select->where('id = ?', $id);
@@ -29,70 +29,70 @@ class Application_Model_DbTable_CmsLetters extends Zend_Db_Table_Abstract
     
     /**
      * @param int $id
-     * @param array $letter Associative array with keys as column names and values as column new values
+     * @param array $language Associative array with keys as column names and values as column new values
      */
-    public function updateLetter ($id, $letter) {
+    public function updateLanguage ($id, $language) {
         
-        if (isset($letter['id'])) {
+        if (isset($language['id'])) {
             // Forbid changing of user id
-            unset($letter['id']);
+            unset($language['id']);
         }
         
-        $this->update($letter, 'id = ' . $id);
+        $this->update($language, 'id = ' . $id);
     }
     
     /**
-     * @param array $letter Associative array with keys as column names and values as column new values
-     * @return int The ID of new letter (autoincrement)
+     * @param array $language Associative array with keys as column names and values as column new values
+     * @return int The ID of new language (autoincrement)
      */
-    public function insertLetter ($letter) {
-        // fetch order number for new letter
+    public function insertLanguage ($language) {
+        // fetch order number for new language
         
         $select = $this->select();
         
         $select->order('order_number DESC');
         
-        $letterWithBiggerstOrderNumber = $this->fetchRow($select);
+        $languageWithBiggerstOrderNumber = $this->fetchRow($select);
         
-        if ($letterWithBiggerstOrderNumber instanceof Zend_Db_table_Row) {
+        if ($languageWithBiggerstOrderNumber instanceof Zend_Db_table_Row) {
             
-            $letter['order_number'] = $letterWithBiggerstOrderNumber['order_number'] + 1;
+            $language['order_number'] = $languageWithBiggerstOrderNumber['order_number'] + 1;
             
         } else {
 			
-            $letter['order_number'] = 1;
+            $language['order_number'] = 1;
         }
         
-        $id = $this->insert($letter);
+        $id = $this->insert($language);
         
         return $id;
     }
     
     /**
-     * @param int $id ID of letter to delete
+     * @param int $id ID of language to delete
      */
-    public function deleteLetter ($id) {
+    public function deleteLanguage ($id) {
         
-        $letterPhotoFilePath = PUBLIC_PATH . '/uploads/letters/' . $id . '.jpg';
-        if(is_file($letterPhotoFilePath)) {
+        $languagePhotoFilePath = PUBLIC_PATH . '/uploads/languages/' . $id . '.jpg';
+        if(is_file($languagePhotoFilePath)) {
 			
-            unlink($letterPhotoFilePath);
+            unlink($languagePhotoFilePath);
         }
         
-        $letter = $this->getLetterById($id);
+        $language = $this->getLanguageById($id);
         
         $this->update(array(
            'order_number' => new Zend_Db_Expr('order_number - 1') 
         ),
-        'order_number > ' . $letter['order_number']);
+        'order_number > ' . $language['order_number']);
         
         $this->delete('id = ' . $id);
     }
     
     /**
-     * @param int $id ID of letter to disable
+     * @param int $id ID of language to disable
      */
-    public function disableLetter ($id) {
+    public function disableLanguage ($id) {
         
         $this->update(array(
             'status' => self::STATUS_DISABLED
@@ -100,16 +100,16 @@ class Application_Model_DbTable_CmsLetters extends Zend_Db_Table_Abstract
     }
     
     /**
-     * @param int $id ID of letter to enable
+     * @param int $id ID of language to enable
      */
-    public function enableLetter ($id) {
+    public function enableLanguage ($id) {
         
         $this->update(array(
             'status' => self::STATUS_ENABLED
         ), 'id = ' . $id);
     }
     
-    public function updateOrderOfLetters ($sortedIds) {
+    public function updateOrderOfLanguages ($sortedIds) {
         foreach ($sortedIds as $orderNumber => $id) {
             
             $this->update(array(

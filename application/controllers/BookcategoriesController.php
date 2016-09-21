@@ -55,10 +55,21 @@ class BookcategoriesController extends Zend_Controller_Action {
 				);
 			}
 		}
+		
+		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
+		$authors = $cmsAuthorsDbTable->search(array(
+			'filters' => array(
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+				),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
 
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
 		$this->view->categories = $categories;
+		$this->view->authors = $authors;
     }
 	
 	public function bookcategoryAction () {
@@ -86,8 +97,9 @@ class BookcategoriesController extends Zend_Controller_Action {
 			)
 		));
 		
-		$id = $request->getParam('id');
-		$categoryId = $sitemapPageCategories[0]['id'];
+		$id = $sitemapPageCategories[0]['id'];
+		
+		$categoryId = $sitemapPageCategories[0]['parent_id'];
 		$category = $cmsSitemapPageDbTable->search(array(
 			'filters' => array(
 				'id' => $id,
@@ -99,6 +111,8 @@ class BookcategoriesController extends Zend_Controller_Action {
 				'order_number' => 'ASC'
 			),
 		));
+		
+		
 		
 		$category = $category[0];
 		

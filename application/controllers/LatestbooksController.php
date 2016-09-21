@@ -33,9 +33,18 @@ class LatestbooksController extends Zend_Controller_Action {
 			'limit' => 20
 		));
 		
-		
+		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
+		$authors = $cmsAuthorsDbTable->search(array(
+			'filters' => array(
+				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+				),
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
 
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
+		$this->view->authors = $authors;
 	}
 }

@@ -10,7 +10,7 @@ $this->headTitle($this->sitemapPage['title']);
             <!--******************************************
                      MAIN PRODUCTS-SORTING START
             ******************************************-->
-<!--            <div class="productSorting text-center">
+            <div class="productSorting text-center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
@@ -20,7 +20,7 @@ $this->headTitle($this->sitemapPage['title']);
                         </div>
                         <div class="col-sm-4">
                             <article>
-                                <p>34,231 results in books</p>
+                                <p><strong><?php echo count($this->books);?></strong> results in books</p>
                             </article>
                         </div>
                         <div class="col-sm-4">
@@ -40,9 +40,9 @@ $this->headTitle($this->sitemapPage['title']);
                     </div>
                 </div>
             </div>
-            ******************************************
+            <!--******************************************
                      MAIN PRODUCTS-SORTING END
-            ******************************************
+            ******************************************-->
             <section class="filter-wrapper">
                 <form class="formFilter">
 
@@ -80,13 +80,9 @@ $this->headTitle($this->sitemapPage['title']);
                     </ul>
                     <ul class="list-unstyled productCategories">    
                         <li class="titles"><a href="#">AUTHOR</a>
-                        <li><a href="#">John Green <span class="priceAuthor">288</span></a></li>
-                        <li><a href="#">J.J. Smith <span class="priceAuthor">3</span></a></li>
-                        <li><a href="#">Laura Hillenbrand <span class="priceAuthor">5</span></a></li>
-                        <li><a href="#">George R.R. Martin <span class="priceAuthor">377</span></a></li>
-                        <li><a href="#">Dean Koontz <span class="priceAuthor">260</span></a></li>
-                        <li><a href="#">Edward Klein <span class="priceAuthor">4</span></a></li> 
-                        <li><a href="#">Donna Tartt <span class="priceAuthor">5</span></a></li>
+							<?php foreach($this->authors as $author) {;?>
+								<li><a href="<?php echo $this->authorUrl($author);?>"><?php echo $this->escape($author['name']);?> <span class="priceAuthor">288</span></a></li>
+							<?php }?>
                     </ul>
                     <p><a href="#" class="arrowRightAuthor">See all <span class="fa fa-arrow-right"></span></a>  </p>
                     <ul class="list-unstyled productCategories">    
@@ -102,7 +98,7 @@ $this->headTitle($this->sitemapPage['title']);
                     <p><a href="#" class="arrowRightAuthor">See all <span class="fa fa-arrow-right"></span></a>  </p>
                 </form>
             </section>
-			<hr>-->
+			<hr>
 
 
 
@@ -122,7 +118,12 @@ $this->headTitle($this->sitemapPage['title']);
 									<?php }?>
 									</figure>
 									<h4 class="down"><a href="<?php echo $this->bookUrl($book);?>"><b><?php echo $this->escape($book['title']);?></b></a></h4>
-									<p><span class="by">by</span> Stephen King</p>
+									<p><span class="by">by</span>
+									<?php foreach($this->authors as $author) {
+										if($author['id'] == $book['author_id']) {
+										echo $author['name'];
+									}}?>
+									</p>
 									<p class="prise center-block"><?php echo $this->escape($book['price']);?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
 								</div>
 					<?php }?>

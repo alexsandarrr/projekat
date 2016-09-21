@@ -121,7 +121,12 @@ $this->headTitle($this->sitemapPage['title']);
 										<span class="sale">SALE</span>
 									</figure>
 									<h4 class="down"><a href="<?php echo $this->bookUrl($book);?>"><b><?php echo $this->escape($book['title']);?></b></a></h4>
-									<p><span class="by">by</span> Stephen King</p>
+									<p><span class="by">by</span>
+									<?php foreach($this->authors as $author) {
+										if($author['id'] == $book['author_id']) {
+										echo $author['name'];
+									}}?>
+									</p>
 									<p class="prise center-block"><?php echo $this->escape($book['price']);?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
 								</div>
 							<?php

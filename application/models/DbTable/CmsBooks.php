@@ -162,6 +162,7 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
                     case 'isbn':
                     case 'category_id':
                     case 'author_id':
+					case 'language_id':
                     case 'order_number':
                     case 'status':
 					case 'sale':
@@ -235,6 +236,7 @@ class Application_Model_DbTable_CmsBooks extends Zend_Db_Table_Abstract
 				case 'isbn':
 				case 'category_id':
 				case 'author_id':
+				case 'language_id':
 				case 'order_number':
 				case 'status':
 				case 'sale':
