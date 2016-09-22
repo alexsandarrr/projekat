@@ -1,0 +1,17 @@
+<?php
+	$images  = $this->images;
+	$galleries  = $this->galleries;
+	if(count($galleries) > 0){
+			echo "Ukupno galerija: " . count($galleries) . "<br><br><br><br><br><br><br>";
+			foreach ($galleries as $gallery) {
+				echo "Galerija: " .$gallery['title'] . " ima ukupno slika: ". count($images[$gallery['id']])."<br>-------------------------<br>";
+				if(count($images[$gallery['id']]) > 0){
+					foreach ($images[$gallery['id']] as $image) {
+						echo "<img style='margin: 20px; width: 100px; height: auto;' src='/uploads/photo-galleries/photos/".$image['id'].".jpg'><br>";
+					}
+				}
+				
+				echo "-------------------------<br><br><br>";
+			}
+	}
+?>

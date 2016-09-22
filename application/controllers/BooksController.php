@@ -33,9 +33,6 @@ class BooksController extends Zend_Controller_Action {
 		
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 		$authors = $cmsAuthorsDbTable->search(array(
-			'filters' => array(
-				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
-				),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
@@ -102,7 +99,6 @@ class BooksController extends Zend_Controller_Action {
 		$author = $cmsAuthorsDbTable->search(array(
 		   'filters' => array(
 			   'id' => $book['author_id'],
-				'status' => Application_Model_DbTable_CmsAuthors::STATUS_ENABLED
 		   ), 
 		));
 		$author = $author[0];

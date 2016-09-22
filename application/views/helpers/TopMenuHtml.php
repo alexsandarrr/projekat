@@ -36,6 +36,24 @@ class Zend_View_Helper_TopMenuHtml extends Zend_View_Helper_Abstract
 							'order_number' => 'ASC'
 						)
 					));
+					
+					$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
+						$books = array();
+						if (count($childElements) > 0) {
+							foreach ($childElements as $childElement) {
+								$books[$childElement['id']] = $cmsBooksDbTable->search(array(
+									'filters' => array(
+										'category_id' => $childElement['id'],
+										'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED
+									),
+									'orders' => array(
+										'order_number' => 'ASC',
+									),
+									'limit' => 5
+										)
+								);
+							}
+						}
 					if (!empty($childElements)) { ?>
 						<li class="dropdown">
 							<a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="<?php echo $this->view->sitemapPageUrl($sitemapPage['id']);?>">
@@ -43,11 +61,12 @@ class Zend_View_Helper_TopMenuHtml extends Zend_View_Helper_Abstract
 								<span class="caret"></span>
 							</a>
 						<ul class="dropdown-menu">
-							<?php foreach($childElements as $childElement) {?>
+							<?php foreach($childElements as $childElement) {
+								if(count($books[$childElement['id']]) > 0){?>
 									<li>
 										<a href="<?php echo $this->view->sitemapPageUrl($childElement['id']);?>"><?php echo $this->view->escape($childElement['short_title']);?></a>
 									</li>
-							<?php }?>
+							<?php }}?>
 						</ul>
                 </li>
 				<?php } else {?>

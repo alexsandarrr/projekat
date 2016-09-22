@@ -35,9 +35,6 @@ class LatestbooksController extends Zend_Controller_Action {
 		
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 		$authors = $cmsAuthorsDbTable->search(array(
-			'filters' => array(
-				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
-				),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),

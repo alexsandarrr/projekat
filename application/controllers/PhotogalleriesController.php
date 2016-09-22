@@ -39,8 +39,22 @@ class PhotogalleriesController extends Zend_Controller_Action
 			)
 		));
 		
+		$cmsPhotosDbTable = new Application_Model_DbTable_CmsPhotos();
+		
+		if(count($photoGalleries) > 0) {
+			$photos = array();
+			foreach ($photoGalleries as $gallery) {
+				$photos[$gallery['id']] = $cmsPhotosDbTable->search(array(
+					'filters' => array(
+						'photo_gallery_id' => $gallery['id']
+					)
+				));
+			}
+		}
+		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->photoGalleries = $photoGalleries;
+		$this->view->photos = $photos;
 	}
 	
 	public function galleryAction() {

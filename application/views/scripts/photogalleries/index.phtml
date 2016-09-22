@@ -2,6 +2,7 @@
 
 $this->headTitle($this->sitemapPage['title']);
 $this->headMeta()->appendName('description', $this->sitemapPage['description']);
+
 ?>
 
 <!--******************************************
@@ -14,7 +15,9 @@ $this->headMeta()->appendName('description', $this->sitemapPage['description']);
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-						<?php foreach($this->photoGalleries as $photoGallery) {?>
+						<?php foreach($this->photoGalleries as $photoGallery) {
+						if(count($this->photos[$photoGallery['id']]) > 0){
+						?>
 						<div class="blogLists spacing">                          
 							<a href="<?php echo $this->photoGalleryUrl($photoGallery);?>" blog-img><img src="<?php echo $this->photoGalleryLeadingPhotoUrl($photoGallery);?>" alt="" class="center-block img-responsive"/></a>
 							<div class="spacing" style="text-align: center">
@@ -22,7 +25,7 @@ $this->headMeta()->appendName('description', $this->sitemapPage['description']);
 							</div>
 						</div>
 						<hr>
-						<?php }?>
+						<?php }}?>
 					</div>
 				</div>
 			</div>

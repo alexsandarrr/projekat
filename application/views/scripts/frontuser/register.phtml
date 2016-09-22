@@ -1,0 +1,258 @@
+<?php
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
+?>
+
+ <main class="register">
+	<div class="container">
+		<div class="tabulator">
+			<ul class="nav nav-pills text-center">
+				<!--<li role="presentation" class="active"><a href="#individualEntity" aria-controls="#individualEntity"  data-toggle="pill">Fizicko lice</a></li>-->
+<!--				<li role="presentation"><a class="legalEntity" href="#legalEntity" aria-controls="#legalEntity"  data-toggle="pill">Pravno lice</a></li>-->
+			</ul>
+
+
+			<div class=" tab-content">
+				<div  class="tab-pane active tabForm" id="individualEntity">
+					<form class="formRegister" id="formUser" action="" method="post">
+						<input type="hidden" name="task" value="register">
+						<section class="row">
+							<div class="col-sm-6">
+								<div class="form-group ">
+									<?php 
+									echo $form->getElement('first_name')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Ime',
+										'id' => 'first_name',
+										'required' => 'required',
+										'data-error' => "Unesite Vase ime",
+										'pattern' => "^[_A-z]{1,}$",
+									));
+									?>
+									<span class="star">*</span>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('first_name')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('first_name')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div> 
+							<div class="col-sm-6">  
+								<div class="form-group">
+									<?php 
+									echo $form->getElement('last_name')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Prezime',
+										'id' => 'last_name',
+										'required' => 'required',
+										'data-error' => "Unesite Vase prezime",
+										'pattern' => "^[_A-z]{1,}$"
+									));
+									?>
+									<span class="star">*</span>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('last_name')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('last_name')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>
+
+							</div>  
+						</section>
+
+						<section class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<?php 
+									echo $form->getElement('address')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Ulica',
+										'id' => 'address',
+										'required' => 'required',
+										'data-error' => "Unesite Vasu ulicu",
+									));
+									?>
+									<span class="star">*</span>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('address')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('address')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div> 
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group">
+											<?php 
+											echo $form->getElement('city')->setAttribs(array(
+												'class' => 'form-control',
+												'placeholder' => 'Grad',
+												'id' => 'city',
+												'required' => 'required',
+												'data-error' => "Unesite Vas grad",
+											));
+											?>
+											<span class="star">*</span>
+											<div class="help-block with-errors">
+												<?php if ($form->getElement('city')->hasErrors()) {?>
+												<div class="has-error">
+													<?php foreach ($form->getElement('city')->getMessages() as $message) {?>
+													<p class="help-block"><?php echo $this->escape($message);?></p>
+													<?php }?>
+												</div>
+												<?php }?>
+											</div>
+										</div>
+									</div>
+								</div>                                     
+							</div>  
+						</section>
+						<section class="row">
+							<div class="col-sm-6">
+								<div class="form-group"> 
+									<?php 
+									echo $form->getElement('mobile_phone')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Kontakt telefon',
+										'id' => 'mobile_phone',
+										'required' => 'required',
+										'data-error' => "Unesite Vas kontant telefon",
+										'pattern' => "[_0-9]{1,}$"
+									));
+									?>
+									<span class="star">*</span>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('mobile_phone')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('mobile_phone')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div> 
+						</section>
+						<section class="row topSpace">
+							<div class="col-sm-4">
+								<div class="form-group">
+									<?php 
+									echo $form->getElement('email')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Email',
+										'id' => 'email',
+										'required' => 'required',
+										'data-error' => "Unesite ispravan email",
+									));
+									?>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('email')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('email')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div> 
+							<div class="col-sm-4">
+								<div class="form-group">
+									<?php 
+									echo $form->getElement('password')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Lozinka',
+										'id' => 'password',
+										'required' => 'required',
+									));
+									?>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('password')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('password')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<?php 
+									echo $form->getElement('password_confirm')->setAttribs(array(
+										'class' => 'form-control',
+										'placeholder' => 'Ponovi lozinku',
+										'required' => 'required',
+										'id' => 'password_confirm',
+										'data-match' => "#password",
+										'data-match-error'=> "Lozinka se ne podudara, pokusajte jos jednom." 
+									));
+									?>
+									<div class="help-block with-errors">
+										<?php if ($form->getElement('password_confirm')->hasErrors()) {?>
+										<div class="has-error">
+											<?php foreach ($form->getElement('password_confirm')->getMessages() as $message) {?>
+											<p class="help-block"><?php echo $this->escape($message);?></p>
+											<?php }?>
+										</div>
+										<?php }?>
+									</div>
+								</div>  
+							</div> 
+						</section>
+						<section class="row">
+								<div class="col-sm-12">
+									<div class="checkbox clearfix">
+										<label>
+											<?php
+											echo $form->getElement('newsletter')->setAttribs(array(
+												'id' => 'sale',
+											));
+											?>
+										Želim da primam obaveštenja o akcijama i uslugama
+										</label>
+										<label>
+											<?php
+											echo $form->getElement('terms_and_conditions')->setAttribs(array(
+												'id' => 'terms_and_conditions',
+												'required' => 'required',
+											));
+											?>
+											<span class="required">*</span>
+										Upoznat/a sam sa <a href=# style="color: #e41913;">uslovima i pravilima poslovanja</a> i prihvatam ih.
+										</label>
+										<label>
+											<?php
+											echo $form->getElement('personal_data')->setAttribs(array(
+												'id' => 'personal_data',
+												'required' => 'required',
+											));
+											?>
+											<span class="required">*</span>
+											Nakon što sam se upoznao/upoznala sa navedenim obaveštenjem i isto u potpunosti <br>
+											razumeo/razumela, izjavljujem da dajem pristanak za navedenu obradu podataka o ličnosti
+										</label>
+									</div>
+								</div>
+						</section>
+						<button type="submit" class="btn btn-success center-block">Posalji</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

@@ -58,9 +58,6 @@ class BookcategoriesController extends Zend_Controller_Action {
 		
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 		$authors = $cmsAuthorsDbTable->search(array(
-			'filters' => array(
-				'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
-				),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
@@ -130,8 +127,16 @@ class BookcategoriesController extends Zend_Controller_Action {
 				
 		$books = $books[$category['id']];
 		
+		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
+		$authors = $cmsAuthorsDbTable->search(array(
+			'orders' => array(
+				'order_number' => 'ASC'
+			),
+		));
+		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
 		$this->view->category = $category;
+		$this->view->authors = $authors;
 	}
 }
