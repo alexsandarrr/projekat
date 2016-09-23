@@ -1,0 +1,649 @@
+footer{
+    margin-top: 50px;
+}
+.menu{
+    padding: 0;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {   
+    background-color: #4e7f16;
+    text-align: center;
+    font-weight: bold;
+}
+.top-menu-first {
+    display: none;
+}
+.nav-pills a{
+    color:#000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0;
+}
+.nav-pills > li > a {
+    outline: 0;
+}
+.nav > li > a {
+    padding: 2px 15px;
+    line-height: 20px;
+}
+.hideBookShop{
+    padding: 0 15px;
+    color: #000;
+    outline: 0;
+}
+.hideBookShop h1{
+    margin-top: 0;
+    font-family: 'Lobster', cursive;
+}
+.hideBookShop:hover{
+    color:#4e7f16;
+    text-decoration: none;
+}
+#userPanel .media{
+    float: none;
+    margin:20px 0 0 0;
+    width: 100%;
+    background:#eaefe1;
+    padding:20px;
+    border-radius: 3px;
+    border:none;
+}
+#userPanel .media-body{
+    padding-top: 30px;
+    padding-left: 0px;
+}
+#userPanel input{
+    border: 2px solid #000;
+}
+#userPanel input:focus{
+    border:2px solid green;
+}
+#mojaLozinka form{
+    width: 500px;
+    max-width: 95%;
+}
+#mojaLozinka .form-control:focus {
+    box-shadow:none;
+}
+#mojaLozinka label{
+    font-size: 13px;
+}
+#mojaLozinka a{
+    color:#fff;
+    background:#4e7f16;
+    padding: 10px;
+    border-radius: 5px;
+}
+#mojaLozinka a:hover, #mojaLozinka a:focus {
+    background: #0a8601;
+    text-decoration: none;
+    outline: 0;
+}
+#userPanel .area{
+    display: none;
+    margin-top: 20px;
+}
+#userPanel .area textarea{
+    resize: none;
+    border:2px solid #000 !important;
+    display: block;
+    margin-bottom: 20px;
+    width: 500px;
+    height: 200px;
+    max-width: 95%;
+}
+#userPanel .area textarea:focus{
+    border:2px solid green !important;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top:20px !important;
+}
+#mojePoruke .messages{
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+#mojePoruke .messages p:nth-child(1){
+    color: orange;
+    font-weight: bold;
+}
+#mojePoruke span{
+    color: #ccc;
+}
+#mojePoruke a{
+    color: #4e7f16;
+    font-weight: bold;
+}
+#mojePoruke a:focus{
+    outline: 0;
+}
+#mojePoruke .fa-reply{
+    color: #4e7f16;
+    padding-right: 5px;
+}
+#mojaKupovina{
+    margin-top: 30px;
+}
+#mojaKupovina .loremIpsum p{
+    font-size: 11px;
+    color: green;
+}
+#mojaKupovina thead td{
+    color: green;
+    font-weight: bold;
+    font-family:Verdana;
+}
+#mojaKupovina .hideTable{
+    display: none;
+}
+.showHistory{
+    background: #4e7f16;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.showHistory:hover, .showHistory:focus{
+    background:#1d1d1c;
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+}
+#mojaKupovina td{
+    font-size:10px;
+}
+#mojaKupovina table figure{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+#mojaKupovina table figure img{
+    position: absolute;
+}
+/********************************************************
+                    ERROR PAGE START
+*********************************************************/
+.errorPage{
+    text-align: center;
+}
+.errorPage p{
+    display: inline;
+}
+.errorPage p:nth-child(1){
+    color:green;
+    font-size:20px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+.errorPage p:nth-child(2){
+    color:orange;
+    font-size: 16px;
+}
+.errorPage a{
+    display: block;
+    color:#444;
+    font-size: 10px;
+    margin-top: 10px;
+}
+.errorPage a:focus{
+    outline: 0;
+}
+/********************************************************
+                    ERROR PAGE END
+*********************************************************/
+
+
+
+
+
+
+/********************************************************
+                    CART PAGE START
+*********************************************************/
+
+.cartPage a{
+    color:#4e7f16;
+    font-size: 12px;
+}
+.cartPage a:hover{
+    color:#444;
+    transition: .5s;
+    text-decoration: none;
+}
+.cartPage p{
+    font-size: 10px;
+}
+.cartPage td{
+    font-size: 10px;
+}
+.cartPage table figure{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+.cartPage table figure img{
+    position: absolute;
+}
+.cartPage .continueWithShop{
+    margin-top: 40px;
+}
+.cartPage .continueWithShop p{
+    margin-bottom: 20px;
+}
+.cartPage .continueWithShop a{
+    border-radius: 5px;
+}
+.cartPage .continueWithShop a:nth-child(2){
+    margin-right: 10px;
+    background: #d3d3d3;
+    padding: 5px;
+    font-size: 10px;
+}
+.cartPage .continueWithShop a:nth-child(3){
+    margin-right: 10px;
+    background: orange;
+    padding: 5px;
+    font-size: 10px;
+}
+/********************************************************
+                    CART PAGE END
+*********************************************************/
+
+
+.concluding figure{
+    float:left;
+    margin-right: 4px;
+}
+.concludingPurchases .use input{
+    padding:5px 10px;
+    border-radius: 4px;
+    border-color: #000;
+    margin-bottom: 10px;
+}
+.concludingPurchases .use a{
+    background: #d3d3d3;
+    padding: 7px;
+    border-radius: 5px;
+    color:#4e7f16;
+}
+.lastOrder .payment{
+    text-align: right;
+}
+.concludingPurchases .use a:hover{
+    color:#444;
+    transition: .5s;
+    text-decoration: none;
+}
+.concludingPurchases  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 4px;
+}
+.concludingPurchases td{
+    font-size: 10px;
+}
+.concludingPurchases table figure{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+.concludingPurchases table figure img{
+    position: absolute;
+}
+.concludingPurchases .lastOrder{
+    margin-top: 30px;
+}
+.concludingPurchases .orderForm input{
+    border: 2px solid #000;
+}
+.concludingPurchases .orderForm input:focus{
+    border: 2px solid green;  
+    box-shadow:none;
+}
+.concludingPurchases .orderForm select{
+    border: 2px solid #000;  
+}
+.concludingPurchases .orderForm select:focus{
+    border: 2px solid green;  
+    box-shadow:none;
+}
+.concludingPurchases .orderForm{
+    margin: 0;
+    margin-top: 0;
+    width: 1000px;
+    max-width: 90%;
+}
+.orderForm select{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
+    appearance:none;
+    background:url(style-images/ArrowDownForm.png) no-repeat center right;
+    padding: 5px 15px 5px 5px;
+}
+.concludingPurchases .order1BackAndNext{
+    margin-top: 20px;
+}
+.concludingPurchases .order1BackAndNext a{
+    font-weight: bold;
+    color:#4e7f16;
+    font-size: 12px;
+}
+.concludingPurchases .order1BackAndNext a:nth-child(1){
+    margin-top: 7px;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%
+}
+.concludingPurchases .order1BackAndNext a:nth-child(2){
+    padding: 7px;
+    border-radius: 5px;
+    background:#4e7f16;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+.concludingPurchases .order1BackAndNext a:nth-child(2):hover{
+    color:#000;
+    transition: .5s;
+}
+.concludingPurchases .order1BackAndNext a:hover{
+    color: #000 !important;
+    transition: .5s;
+    text-decoration: none;
+}
+.concludingPurchases .order1Modals a{
+    display: block;
+    text-align: center;
+    margin-top:5px;
+    font-weight: bold;
+    color:#4e7f16;
+    font-family: Verdana; 
+}
+.concludingPurchases .order1Modals a:focus{
+    outline: 0;
+}
+.concludingPurchases .order1Modals a:nth-child(1){
+    margin-top:30px;
+}
+.concludingPurchases .order1Modals a:hover{
+    color: #000;
+    text-decoration: none;
+    transition: .5s;
+}
+.orderRight{
+    display: none;
+}
+.order2Form{
+    border:1px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.order2Form .order2RadioButtons{
+    display: block;
+    font-size: 12px;
+}
+.orderLeft2 a{
+    color:#4e7f16;
+    outline: 0;
+}
+.orderLeft2 a:hover{
+    color:#000;
+    transition: .5s;
+    text-decoration: none;
+}
+
+.order3Form .order2RadioButtons{
+    border:1px solid #ccc;
+    padding: 10px;
+}
+.order3Form .order2RadioButtons:nth-child(2){
+    border-top: 0px;
+}
+.order3Form2{
+    border:1px solid #ccc;
+    border-top: 0;
+    padding: 10px; 
+    display: none;
+}
+.order3Form2 input{
+    border:2px solid #000;
+}
+.order3Form2 input:focus{
+    border:2px solid green;
+}
+.secondRadioButton{
+    display: block;
+}
+.order3Form2 select{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
+    appearance:none;
+    background:url(style-images/ArrowDownForm.png) no-repeat center right;
+    padding: 5px 15px 5px 5px;
+    border:2px solid #000;
+}
+.order3Form2 select:focus{
+    border:2px solid green;
+}
+.order3Form2 .form-control:focus {
+    box-shadow:none;
+}
+
+.order4{
+    border:1px solid #ccc;
+}
+.order4 a{
+    padding-bottom: 20px;
+    color:#4e7f16;
+}
+.order4 a:hover{
+    color: #000;
+    text-decoration: none;
+    transition: .5s;
+}
+.methodOfPayment, .methodOfDelivery{
+    margin-bottom: 30px;
+}
+.leftArticle .DeliveryConfirm{
+    padding: 10px;
+    border:1px solid #000;
+    border-radius: 10px;
+}
+.leftArticle .DeliveryConfirm h3{
+    border-bottom: 1px solid green;
+    padding-bottom: 3px;
+    margin-top: 20px;
+}
+.dugme{
+    display: block;
+    text-align: center;
+    outline: 0;
+    color:#4e7f16;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.dugme:hover{
+    outline: 0;
+    color:#000;
+    transition: .5s;
+    text-decoration: none;
+}
+.dugme:focus{
+    outline: 0;
+}
+.dugme span{
+    padding-left: 5px;
+}
+.order3BackAndNext a{
+    font-size: 12px !important;
+}
+@media screen and (min-width:768px){
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {   
+
+        text-align: left;
+    }
+    .nav-pills a{
+
+        text-align: left;
+    }
+    header{
+        margin-bottom: 100px;    
+    }
+    .nav > li > a {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    h2{
+        font-size: 30px;
+        font-weight: bold;
+        margin-top:30px !important;
+        margin-bottom: 30px;
+    }
+
+    .errorPage{
+        text-align: center;
+        margin-top: -100px;
+    }
+    .errorPage p{
+        display: inline;
+    }
+    .errorPage p:nth-child(1){
+        font-size:200px;
+        font-weight: 800;
+        margin-right: 40px;
+    }
+    .errorPage p:nth-child(2){
+        font-size: 130px;
+    }
+    .errorPage a{
+        display: block;
+        color:#444;
+        font-size: 20px;
+    }
+    .cartPage td{
+        font-size: 14px;
+    }
+    .cartPage a{
+
+        font-size: 14px;
+    }
+    .cartPage p{
+        font-size: 12px;
+    }
+    .cartPage table figure{
+        width: 100px;
+        height: 100px;
+
+    }
+    .cartPage table figure img{
+        width: 100%;
+        height: 100%;
+    }
+    .orderLeft{
+        float: left;
+    }
+    .orderRight{
+        float: right;
+    }
+    .concluding figure{
+        float:left;
+        margin-right: 10px;
+    }
+    .concludingPurchases td{
+        font-size: 14px;
+    }
+    .nextPage{
+        margin-right:40px;
+    }
+    .order3BackAndNext .nextPage{
+        margin-right: 0px;
+    }
+    .order3BackAndNext a{
+        font-size: 12px;
+    }
+    .concludingPurchases .order1BackAndNext{
+        margin-top: 40px;
+    }
+    .concludingPurchases .order1Modals{
+        margin-top: 50px;
+    }
+    .orderRight{
+        display: block;
+    }
+    .order2Form .order2RadioButtons{
+        font-size: 14px;
+    }
+    .leftArticle{
+        text-align: left;
+    }
+    .cartPage .continueWithShop a:nth-child(2){
+        padding: 10px;
+        font-size: 12px;
+    }
+    .cartPage .continueWithShop a:nth-child(3){
+        padding: 10px;
+        font-size: 12px;
+    }
+    #mojaKupovina td{
+        font-size:12px;
+    }
+    .dugme{
+        display: none;
+    }
+    .top-menu-first {
+        display: block;
+    }
+    .concludingPurchases .order1BackAndNext a:nth-child(1){
+        width: auto !important;
+    }
+    .concludingPurchases .order1BackAndNext a:nth-child(2){
+        width: auto !important;
+    }
+}
+@media screen and (min-width:992px){
+    .concludingPurchases .order1Modals{
+        border-top:1px solid #444;
+        padding-top: 10px;
+    }
+    .concludingPurchases .order1Modals a{
+        display: inline;
+        margin-right: 20px;
+        font-size: 9px;
+    }
+    .orderLeft2 .order1BackAndNext a:nth-child(1){
+        float: left;
+    }
+    .orderLeft2 .order1BackAndNext a:nth-child(2){
+        float: right;
+    }
+    .order1BackAndNext a:nth-child(1){
+        float: left;
+    }
+    .order1BackAndNext a:nth-child(2){
+        float: right;
+    }
+    #mojaKupovina td{
+        font-size:14px;
+    }
+    .concludingPurchases .use input{
+        width: 250px;
+    }
+    .order3BackAndNext a{
+        font-size: 14px !important;
+    }
+}
+@media screen and (min-width:1200px){
+    .concludingPurchases .order1Modals a{
+        font-size: 11px;
+        margin-right: 13px;
+    }
+    .concludingPurchases .use input{
+        width: 350px;
+    }
+}
