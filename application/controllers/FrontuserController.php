@@ -3,18 +3,83 @@
 class FrontuserController extends Zend_Controller_Action
 {
 	public function indexAction() {
+		$request = $this->getRequest();
 		
+		$cmsFrontUsersDbTable = new Application_Model_DbTable_CmsFrontUsers();
+		
+		$loggedInUser = Zend_Auth::getInstance()->getIdentity();
+		
+		if (!empty($loggedInUser)){
+			$frontUsers = $cmsFrontUsersDbTable->search(array(
+				'filters' => array(
+					'id' => $loggedInUser['id'],
+					'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+					),
+				'orders' => array(
+					'order_number' => 'ASC'
+				),
+			));
+			
+			$frontUser = $frontUsers[0];
+			
+			$user = $cmsFrontUsersDbTable->getFrontUserById($loggedInUser['id']);
+			
+			$form = new Application_Form_EditFrontUser();
+			
+			$form->populate($user);
+			
+			if ($request->isPost() && $request->getPost('task') === 'update') {
+				$form->populate($request->getPost());
+				$formData = $form->getValues();
+				
+				unset($formData['password']);
+				
+				$cmsUsersTable = new Application_Model_DbTable_CmsFrontUsers();
+				$cmsUsersTable->updateFrontUser($user['id'], $formData);
+
+				$redirector = $this->getHelper('Redirector');
+				$redirector->setExit(true)
+					->gotoRoute(array(
+						'controller' => 'frontuser',
+						'action' => 'index'
+						), 'default', true);
+			}
+			
+			$formPassword = new Application_Form_ChangePassword();
+			
+			if ($request->isPost() && $request->getPost('task') === 'newpassword') {
+				$formPassword->populate($request->getPost());
+				$formData = $formPassword->getValues();
+				
+				unset($formData['password_confirm']);
+				
+				$cmsUsersTable = new Application_Model_DbTable_CmsFrontUsers();
+				$cmsUsersTable->changeFrontUserPassword($user['id'], $formData['password']);
+
+				$redirector = $this->getHelper('Redirector');
+				$redirector->setExit(true)
+					->gotoRoute(array(
+						'controller' => 'frontuser',
+						'action' => 'index'
+						), 'default', true);
+			}
+			
+		} else {
+			$redirector = $this->getHelper('Redirector');
+			$redirector instanceof Zend_Controller_Action_Helper_Redirector;
+			$redirector->setExit(true)
+				->gotoRoute(array(
+					'controller' => 'session',
+					'action' => 'login'
+				), 'default', true);
+		}
+		
+		$this->view->form = $form;
+		$this->view->frontUser = $frontUser;
 	}
 
 	public function registerAction() {
 		$request = $this->getRequest();
-
-		$flashMessenger = $this->getHelper('FlashMessenger');
-
-		$systemMessages = array(
-			'success' => $flashMessenger->getMessages('success'),
-			'errors' => $flashMessenger->getMessages('errors'),
-		);
 		
 		$form = new Application_Form_Register();
 		
@@ -29,8 +94,6 @@ class FrontuserController extends Zend_Controller_Action
 
 				$cmsUsersTable->insertFrontUser($formData);
 
-				$flashMessenger->addMessage('User has been saved', 'success');
-
 				$redirector = $this->getHelper('Redirector');
 				$redirector->setExit(true)
 					->gotoRoute(array(
@@ -42,7 +105,6 @@ class FrontuserController extends Zend_Controller_Action
 			}
 		}
 
-		$this->view->systemMessages = $systemMessages;
 		$this->view->form = $form;
 	}
 	
@@ -95,11 +157,7 @@ class FrontuserController extends Zend_Controller_Action
 				//get form data
 				$formData = $form->getValues();
 
-
 				$cmsUsersTable->updateUser($user['id'], $formData);
-
-				//set system message
-				$flashMessenger->addMessage('User has been updated', 'success');
 
 				//redirect to same or another page
 				$redirector = $this->getHelper('Redirector');

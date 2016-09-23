@@ -35,8 +35,6 @@ class Admin_SessionController extends Zend_Controller_Action
 
 				), 'default', true);
 		}
-			
-		
 	}
 	
 	public function loginAction() {
