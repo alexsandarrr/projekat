@@ -13,7 +13,7 @@ class FrontuserController extends Zend_Controller_Action
 			$frontUsers = $cmsFrontUsersDbTable->search(array(
 				'filters' => array(
 					'id' => $loggedInUser['id'],
-					'status' => Application_Model_DbTable_CmsBooks::STATUS_ENABLED,
+					'status' => Application_Model_DbTable_CmsFrontUsers::STATUS_ENABLED,
 					),
 				'orders' => array(
 					'order_number' => 'ASC'
