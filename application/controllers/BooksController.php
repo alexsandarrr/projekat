@@ -14,10 +14,10 @@ class BooksController extends Zend_Controller_Action {
 			throw new Zend_Controller_Router_Exception('No sitemap page is found for id: ' . $sitemapPageId, 404);
 		}
 		if (
-				$sitemapPage['status'] == Application_Model_DbTable_CmsSitemapPages::STATUS_DISABLED &&
-				!Zend_Auth::getInstance()->hasIdentity()
+                    $sitemapPage['status'] == Application_Model_DbTable_CmsSitemapPages::STATUS_DISABLED &&
+                    !Zend_Auth::getInstance()->hasIdentity()
 		) {
-			throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
+                    throw new Zend_Controller_Router_Exception('Sitemap page is disabled', 404);
 		}
 
 		$cmsBooksDbTable = new Application_Model_DbTable_CmsBooks();
@@ -31,17 +31,54 @@ class BooksController extends Zend_Controller_Action {
 			'limit' => 50
 		));
 		
+                // ----- FILTERS -----
+                
 		$cmsAuthorsDbTable = new Application_Model_DbTable_CmsAuthors();
 		$authors = $cmsAuthorsDbTable->search(array(
+                    'orders' => array(
+                        'order_number' => 'ASC'
+                    ),
+		));
+                
+                $sitemapPageCategories = $cmsSitemapPageDbTable->search(array(
+			'filters' => array(
+				'short_title' => 'Book Categories',
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
+			)
+		));
+
+		$categoryId = $sitemapPageCategories[0]['id'];
+		$categories = $cmsSitemapPageDbTable->search(array(
+			'filters' => array(
+				'parent_id' => $categoryId,
+				'status' => Application_Model_DbTable_CmsSitemapPages::STATUS_ENABLED
+			),
 			'orders' => array(
 				'order_number' => 'ASC'
 			),
 		));
-		
-		
+                
+                $cmsCoversDbTable = new Application_Model_DbTable_CmsCovers();
+		$covers = $cmsCoversDbTable->search(array(
+                    'orders' => array(
+                        'order_number' => 'ASC'
+                    ),
+		));
+                
+                $cmsLanguagesDbTable = new Application_Model_DbTable_CmsLanguages();
+		$languages = $cmsLanguagesDbTable->search(array(
+                    'orders' => array(
+                        'order_number' => 'ASC'
+                    ),
+		));
+//                print_r($categories);
+//                die();
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->books = $books;
 		$this->view->authors = $authors;
+                $this->view->categories = $categories;
+                $this->view->covers = $covers;
+                $this->view->languages = $languages;
 	}
 
 	public function bookAction() {
@@ -111,12 +148,19 @@ class BooksController extends Zend_Controller_Action {
 				'order_number' => 'ASC'
 			),
 		));
+                
+                foreach($categories as $category) {
+                    if ($book['category_id'] == $category['id']) {
+                        $bookCategory = $category['short_title'];
+                    }
+                } 
 		
 		$this->view->sitemapPage = $sitemapPage;
 		$this->view->book = $book;
 		$this->view->categories = $categories;
-        $this->view->author = $author;
+                $this->view->author = $author;
 		$this->view->relatedBooks = $relatedBooks;
+                $this->view->bookCategory = $bookCategory;
 	}
 
 }

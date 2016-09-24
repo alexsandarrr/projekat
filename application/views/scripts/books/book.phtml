@@ -30,12 +30,15 @@ $this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
                                 <div class="col-md-6">
                                     <article>
                                         <img src="<?php echo $this->bookImgUrl($this->book);?>" class="bigOrangeBook center-block" height="429" width="303">
-										<?php if($this->book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
-										<span class="sale">SALE</span>
-										<?php }?>
+                                        <?php if($this->book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                                        <span class="sale">SALE</span>
+                                        <?php }?>
+                                        <hr>
+                                        <div class="pharagraphas">
+                                        <?php echo $this->escape($this->book['about']);?>    
+                                        </div>
                                         <hr>
                                         <img class="secondImage center-block" src="/front/img/socialNetworks.png">
-
                                     </article>
                                 </div>
                                 <div class="col-md-6">
@@ -47,10 +50,16 @@ $this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
                                                 <p class="number pull-left"><?php echo $this->escape($this->book['price']);?></p>
                                                 <!--<p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>-->
                                             </div>
-                                            <div class="pharagraphas">
-                                            <?php echo $this->escape($this->book['about']);?>    
-                                            </div>
                                         </div>
+                                        <ul>
+                                            <li>Category: <a href="#"><strong><em><?php echo $this->escape($this->bookCategory);?></em></strong></a></li>
+                                            <li>Format: <strong><em><?php echo $this->escape($this->book['format']);?></em></strong></li>
+                                            <li>Number of Pages: <strong><em><?php echo $this->escape($this->book['number_of_pages']);?></em></strong></li>
+                                            <li>Language: <strong><em><?php echo $this->escape($this->bookCategory);?></em></strong></li>
+                                            <li>Cover: <strong><em><?php echo $this->escape($this->bookCategory);?></em></strong></li>
+                                            <li>Date of Publication: <strong><em><?php echo $this->escape($this->book['date_of_publication']);?></em></strong></li>
+                                            <li>ISBN: <strong><em><?php echo $this->escape($this->book['isbn']);?></em></strong></li>
+                                            </ul>
                                     </article>
                                 </div>
                             </div>

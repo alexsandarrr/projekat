@@ -61,7 +61,7 @@ $user = Zend_Auth::getInstance()->getIdentity();
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-						<li><a href="#">Signed in as <strong><?php echo $this->escape($user['username']);?></strong></a></li>
+                        <li><a href="#">Signed in as <strong><?php echo $this->escape($user['username']);?></strong></a></li>
                         <li class="divider"></li>
                         <li><a href="<?php echo $this->url(array('controller' => 'admin_profile', 'action' => 'edit'), 'default', true);?>"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
                         </li>
@@ -86,25 +86,31 @@ $user = Zend_Auth::getInstance()->getIdentity();
                         <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_books'), 'default', true);?>"><i class="fa fa-book fa-fw"></i> Books</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_authors'), 'default', true);?>"><i class="fa fa-pencil-square-o  fa-fw"></i> Authors</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_services'), 'default', true);?>"><i class="fa fa-cog fa-fw"></i> Services</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'admin_covers'), 'default', true);?>"><i class="fa fa-cog fa-fw"></i> Covers</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'admin_languages'), 'default', true);?>"><i class="fa fa-cog fa-fw"></i> Languages</a>
                         </li>
                         <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_indexslides'), 'default', true);?>"><i class="fa fa-sliders fa-fw"></i> Index Slider</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_photogalleries'), 'default', true);?>"><i class="fa fa-photo fa-fw"></i> Photo Galleries</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_sitemap'), 'default', true);?>"><i class="fa fa-sitemap fa-fw"></i> Sitemap</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_filemanager'), 'default', true);?>"><i class="fa fa-files-o fa-fw"></i> Filemanager</a>
                         </li>
-						<li>
+                        <li>
                             <a href="<?php echo $this->url(array('controller' => 'admin_users'), 'default', true);?>"><i class="fa fa-user fa-fw"></i> Users</a>
                         </li>
                     </ul>
