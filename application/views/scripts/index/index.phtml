@@ -19,7 +19,7 @@
                             <div class="carousel-caption">
                                 <h2><b></b><?php echo $this->indexSlideLinkUrl($indexSlide);?></h2>
                                 <?php if ($indexSlide['link_type'] != 'NoLink') { ?>
-									<a href="<?php echo $this->indexSlideLinkUrl($indexSlide);?>" class="btn btn-lg btn-primary"><?php echo $this->escape($indexSlide['link_label']);?></a>
+                                <a href="<?php echo $this->indexSlideLinkUrl($indexSlide);?>" class="btn btn-lg btn-primary"><?php echo $this->escape($indexSlide['link_label']);?></a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -88,19 +88,23 @@
             <div class="container">
                 <div class="bestsellers clearfix text-center">
                     <h2>Books</h2>
-					<?php foreach($this->books as $book) { ?>
-					<div class="books">
+                    <?php foreach($this->books as $book) { ?>
+                    <div class="books">
                         <figure class="center-block">
                             <a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive"></a>
-							<?php if($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
-								<span class="sale">SALE</span>
-							<?php }?>
+                            <?php if($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                                    <span class="sale">SALE</span>
+                            <?php }?>
                         </figure>                  
                         <h4><a href="<?php echo $this->bookUrl($book);?>"><?php echo $this->escape($book['title']);?></a></h4>
                         <p><span class="by">by</span> Cormac McCartny</p>
-                        <p class="prise center-block"><?php echo $this->escape($book['price']);?><!--<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                            <p class="prise center-block"><?php echo $this->escape($book['sale_price']); ?><br><s><?php echo $this->escape($book['price']); ?></s><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php } else {?>
+                            <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php }?>                    
                     </div>
-					<?php }?>
+                    <?php }?>
                 </div>  
                 <p class="text-center"> <a href="<?php echo $this->sitemapPageUrl('2');?>" class="viewMore">VIEW MORE</a></p>
             </div>

@@ -202,6 +202,29 @@ $form->setElementDecorators(array('ViewHelper'));
                                 <?php } ?>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="sale_price">Sale Price</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('sale_price')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s sale price',
+                                    'id' => 'sale_price',
+                                ));
+                                ?>
+                                <span class="help-block">If not on sale enter "null"</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('price')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('price')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
 						
                         <div class="form-group">
                                 <label class="col-md-4 control-label" for="category_id">Category</label>  

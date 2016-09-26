@@ -11,14 +11,13 @@ $this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
                 <div class="row">
                     <div class="col-sm-3 col-lg-2 leftArticle">
                         <article>
-                            <a href="javascript:void(0)"><p class="text-center artArchitecturePhotography">Art, Architecture & Photography<span class="fa fa-cog"></span></p>
-                            </a>
                             <div class="lists">
                                 <h3 class="text-center">Books by Subject</h3>
                                 <ul class="text-center list-unstyled">
-                                    <?php foreach ($this->categories as $category) {?>
-                                    <li><a href="#"><?php echo $this->escape($category['title']);?></a></li>
-                                    <?php }?>
+                                    <?php foreach ($this->categories as $category) {
+                                        if (count($this->books[$category['id']]) > 0) {?>
+                                    <li><a href="<?php echo $this->sitemapPageUrl($category['id']);?>"><?php echo $this->escape($category['title']);?></a></li>
+                                    <?php }}?>
                                 </ul>
                             </div>
                         </article>
@@ -47,8 +46,10 @@ $this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
                                             <h2><?php echo $this->escape($this->book['title']);?></h2>
                                             <p class="palacio"><span class="by">by</span> <a href="#"><strong><em><?php echo $this->escape($this->author['name']);?></em></strong></a></p>
                                             <div class="clearfix addToCart">
-                                                <p class="number pull-left"><?php echo $this->escape($this->book['price']);?></p>
+                                                <?php if($this->book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                                                <p class="number pull-left"><strong><?php echo $this->escape($this->book['sale_price']);?></strong><br><s><?php echo $this->escape($this->book['price']);?></s></p>
                                                 <!--<p class="prise pull-right"><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a><a href="#">ADD TO CART</a></p>-->
+                                                <?php }?>
                                             </div>
                                         </div>
                                         <ul>
@@ -71,39 +72,37 @@ $this->headTitle($this->book['title'] . ' | ' . $this->sitemapPage['title'])
                                 <div class="relatedProducts">
                                     <h2>Related Books</h2>
                                 </div>
-
                                 <div class="arrowRight">
                                 </div>
-								<?php
-								foreach ($this->relatedBooks as $book) {
-									if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {
-										?>
-										<div class="books">
-											<figure class="center-block">
-												<a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
-												<span class="sale">SALE</span>
-											</figure>
-											<h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
-											<p><span class="by">by</span> Stephen King</p>
-											<p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
-										</div>
-										<?php } else {
-										?>
-										<div class="books">
-											<figure class="center-block">
-												<a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
-											</figure>
-											<h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
-											<p><span class="by">by</span> Stephen King</p>
-											<p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
-										</div>
-									<?php }
-								} ?>
+                                <?php
+                                foreach ($this->relatedBooks as $book) {
+                                    if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {
+                                        ?>
+                                        <div class="books">
+                                            <figure class="center-block">
+                                                <a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
+                                                <span class="sale">SALE</span>
+                                            </figure>
+                                            <h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
+                                            <p><span class="by">by</span> Stephen King</p>
+                                            <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                                        </div>
+                                    <?php } else {
+                                        ?>
+                                        <div class="books">
+                                            <figure class="center-block">
+                                                <a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
+                                            </figure>
+                                            <h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
+                                            <p><span class="by">by</span> Stephen King</p>
+                                            <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                                        </div>
+                                    <?php }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 <!--                <h3 class="text-center customerReviews3"><b>Customer Reviwes (3)</b></h3>
                 <div class="media">

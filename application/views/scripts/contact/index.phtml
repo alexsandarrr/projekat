@@ -1,6 +1,85 @@
 <?php
 
 echo $this->headTitle($this->sitemapPage['title']);
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
 
-echo $this->sitemapPage['body'];
+?>
+
+<section class="contactForm">
+<div class="container">
+<h2 class="text-center">Contact Us</h2>
+
+<form data-toggle="validator" id="form" role="form">
+    <input type="hidden" name="task" value="contact">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Ime</label>
+        <?php
+        echo $form->getElement('name')->setAttribs(array(
+            'class' => 'form-control',
+            'data-error' => "Unesite Vase ime",
+            'pattern' => "^[_A-z]{1,}$",
+            'placeholder' => 'Please enter your name',
+            'id' => 'name',
+            'required' => 'required'
+        ));
+        ?>
+        <?php if ($form->getElement('name')->hasErrors()) { ?>
+            <div class="has-error">
+                <?php foreach ($form->getElement('name')->getMessages() as $message) { ?>
+                    <p class="help-block"><?php echo $this->escape($message); ?></p>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    <div class="help-block with-errors">&nbsp;</div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Email</label>
+        <?php
+        echo $form->getElement('email')->setAttribs(array(
+            'class' => 'form-control',
+            'placeholder' => 'Please enter valid mail',
+            'data-error' => "Unesite ispravnu email adresu",
+            'id' => 'email',
+            'required' => 'required'
+        ));
+        ?>
+        <?php if ($form->getElement('email')->hasErrors()) { ?>
+            <div class="has-error">
+                <?php foreach ($form->getElement('email')->getMessages() as $message) { ?>
+                    <p class="help-block"><?php echo $this->escape($message); ?></p>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    <div class="help-block with-errors">&nbsp;</div>
+    </div>
+
+    <div class="form-group">
+        <?php
+        echo $form->getElement('message')->setAttribs(array(
+            'class' => 'form-control',
+            'placeholder' => 'Please write some text',
+            'id' => 'message',
+            'required' => 'required',
+            'rows' => 15
+        ));
+        ?>
+        <?php if ($form->getElement('message')->hasErrors()) { ?>
+            <div class="has-error">
+                <?php foreach ($form->getElement('message')->getMessages() as $message) { ?>
+                    <p class="help-block"><?php echo $this->escape($message); ?></p>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
+    <button class="btn btn-warning center-block" type="submit">Posalji</button>
+</form>
+</div>
+</section>
+
+<section class="maps">
+    <div class="container"><iframe allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d18547.41065443684!2d20.415602186489288!3d44.82780028264034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1470131468369" style="border:0"></iframe></div>
+</section>
+
 

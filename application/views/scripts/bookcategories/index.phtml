@@ -10,65 +10,51 @@ $books = $this->books;
             <!--******************************************
                             MAIN BESTSELLERS START
              ******************************************-->
-			<?php 
-				foreach($this->categories as $category) {
-					if(count($books[$category['id']]) > 0){
-						?>
-
-							<div class="container">
-								<div class="bestsellers clearfix text-center">
-									<h2><?php echo $this->escape($category['title']);?>
-									<div class="arrowRight" style="font-size: 20px; padding-top: 10px;">
-										<a href="<?php echo $this->sitemapPageUrl($category['id']);?>">See all <span class="fa fa-arrow-right"></span></a>
-									</div>
-										</h2>
-									<?php 
-										foreach($books[$category['id']] as $book) {	
-											?>
-												<div class="books">
-													<figure class="center-block">
-														<a href="<?php echo $this->bookUrl($book);?>"><img src="<?php echo $this->bookImgUrl($book);?>" class="img-responsive"></a>
-													</figure>
-													<h4 class="down"><a href="<?php echo $this->bookUrl($book);?>"><b><?php echo $this->escape($book['title']);?></b></a></h4>
-													<p><span class="by">by</span>
-													<?php
-													foreach ($this->authors as $author) {
-														if ($author['id'] == $book['author_id']) {
-															echo $author['name'];
-														}
-													}
-													?>
-													</p>
-													<p class="prise center-block"><?php echo $this->escape($book['price']);?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
-												</div>
-											<?php
-										}
-									?>
-								</div>
-								<hr>
-							</div>
-						<?php
-					}
-
-				}
-			?>
-                    
-                    
-
-            <div class="container">
-                <div class="bestsellers clearfix text-center">
-                    <h2>Sale</h2>
-                    <div class="books">
-                        <figure class="center-block">
-                            <a href="#"><img src="/front/img/books/bookOrange.png" class="img-responsive"></a>
-                            <span class="sale">SALE</span>
-                        </figure>                  
-                        <h4><a href="#">The Brief Wondrous Life of Oscar Wao</a></h4>
-                        <p><span class="by">by</span> Cormac McCartny</p>
-                        <p class="prise center-block">$1,401.75<a class="shop" href="#"><span ><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a></p>
+            <?php foreach ($this->categories as $category) {
+                if (count($books[$category['id']]) > 0) { ?>
+                    <div class="container">
+                        <div class="bestsellers clearfix text-center">
+                            <h2><?php echo $this->escape($category['title']); ?>
+                                <div class="arrowRight" style="font-size: 20px; padding-top: 10px;">
+                                    <a href="<?php echo $this->sitemapPageUrl($category['id']); ?>">See all <span class="fa fa-arrow-right"></span></a>
+                                </div>
+                            </h2>
+                            <?php
+                            foreach ($books[$category['id']] as $book) {
+                                ?>
+                                <div class="books">
+                                    <figure class="center-block">
+                                        <a href="<?php echo $this->bookUrl($book); ?>"><img src="<?php echo $this->bookImgUrl($book); ?>" class="img-responsive"></a>
+                                        <?php if($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                                        <span class="sale">SALE</span>
+                                        <?php }?>
+                                    </figure>
+                                    <h4 class="down"><a href="<?php echo $this->bookUrl($book); ?>"><b><?php echo $this->escape($book['title']); ?></b></a></h4>
+                                    <p><span class="by">by</span>
+                                        <?php
+                                        foreach ($this->authors as $author) {
+                                            if ($author['id'] == $book['author_id']) {
+                                                echo $author['name'];
+                                            }
+                                        }
+                                        ?>
+                                    </p>
+                                    <?php if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                                    <p class="prise center-block"><?php echo $this->escape($book['sale_price']); ?><br><s><?php echo $this->escape($book['price']); ?></s><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                                    <?php } else {?>
+                                    <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                                    <?php }?>
+                                </div>
+                                    <?php
+                                    }
+                            ?>
+                        </div>
+                        <hr>
                     </div>
-                </div>
-            </div>
+                    <?php 
+                }
+            }
+            ?>
 
             <!--******************************************
                              MAIN BESTSELLERS END

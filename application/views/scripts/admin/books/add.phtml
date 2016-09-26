@@ -92,7 +92,7 @@ $form->setElementDecorators(array('ViewHelper'));
                                     'class' => 'form-control input-md',
                                     'placeholder' => 'enter book\'s number of pages',
                                     'id' => 'number_of_pages',
-									'required' => 'required'
+                                    'required' => 'required'
                                 ));
                                 ?>
                                 <span class="help-block"></span>  
@@ -116,7 +116,7 @@ $form->setElementDecorators(array('ViewHelper'));
                                     'class' => 'form-control input-md',
                                     'placeholder' => 'enter book\'s date of publication',
                                     'id' => 'date_of_publication',
-									'required' => 'required',
+                                    'required' => 'required',
                                 ));
                                 ?>
                                 <span class="help-block">Enter date in format: "YYYY-MM-DD"</span>  
@@ -140,7 +140,7 @@ $form->setElementDecorators(array('ViewHelper'));
                                     'class' => 'form-control input-md',
                                     'placeholder' => 'enter book\'s ISBN',
                                     'id' => 'isbn',
-									'required' => 'required',
+                                    'required' => 'required',
                                 ));
                                 ?>
                                 <span class="help-block">Enter ISBN in format: "000-00-000-0000-0"</span>  
@@ -156,7 +156,7 @@ $form->setElementDecorators(array('ViewHelper'));
                             </div>
                         </div>
 						
-						<div class="form-group">
+			<div class="form-group">
                             <label class="col-md-4 control-label" for="price">Price</label>  
                             <div class="col-md-4">
                                 <?php
@@ -202,94 +202,116 @@ $form->setElementDecorators(array('ViewHelper'));
                                 <?php } ?>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="sale_price">Sale Price</label>  
+                            <div class="col-md-4">
+                                <?php
+                                echo $form->getElement('sale_price')->setAttribs(array(
+                                    'class' => 'form-control input-md',
+                                    'placeholder' => 'enter book\'s sale price',
+                                    'id' => 'sale_price',
+                                ));
+                                ?>
+                                <span class="help-block">If not on sale enter "null"</span>  
+                            </div>
+                            <div class="col-md-4">
+                                <?php if ($form->getElement('price')->hasErrors()) { ?>
+                                    <div class="has-error">
+                                        <?php foreach ($form->getElement('price')->getMessages() as $message) { ?>
+                                            <p class="help-block"><?php echo $this->escape($message); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
 						
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="category_id">Category</label>  
-							<div class="col-md-4">
-								<?php 
-								echo $form->getElement('category_id')->setAttribs(array(
-									'class' => 'form-control input-md',
-									'id' => 'category_id',
-									'required' => 'required'
-								));
-								?>
-							</div>
-							<div class="col-md-4">
-								<?php if ($form->getElement('category_id')->hasErrors()) {?>
-								<div class="has-error">
-									<?php foreach ($form->getElement('category_id')->getMessages() as $message) {?>
-									<p class="help-block"><?php echo $this->escape($message);?></p>
-									<?php }?>
-								</div>
-								<?php }?>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="author_id">Author</label>  
-							<div class="col-md-4">
-								<?php 
-								echo $form->getElement('author_id')->setAttribs(array(
-									'class' => 'form-control input-md',
-									'id' => 'author_id',
-									'required' => 'required',
-								));
-								?>
-							</div>
-							<div class="col-md-4">
-								<?php if ($form->getElement('author_id')->hasErrors()) {?>
-								<div class="has-error">
-									<?php foreach ($form->getElement('author_id')->getMessages() as $message) {?>
-									<p class="help-block"><?php echo $this->escape($message);?></p>
-									<?php }?>
-								</div>
-								<?php }?>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="cover_id">Cover</label>  
-							<div class="col-md-4">
-								<?php 
-								echo $form->getElement('cover_id')->setAttribs(array(
-									'class' => 'form-control input-md',
-									'id' => 'cover_id',
-									'required' => 'required'
-								));
-								?>
-							</div>
-							<div class="col-md-4">
-								<?php if ($form->getElement('cover_id')->hasErrors()) {?>
-								<div class="has-error">
-									<?php foreach ($form->getElement('cover_id')->getMessages() as $message) {?>
-									<p class="help-block"><?php echo $this->escape($message);?></p>
-									<?php }?>
-								</div>
-								<?php }?>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="language_id">Language</label>  
-							<div class="col-md-4">
-								<?php 
-								echo $form->getElement('language_id')->setAttribs(array(
-									'class' => 'form-control input-md',
-									'id' => 'language_id',
-									'required' => 'required',
-								));
-								?>
-							</div>
-							<div class="col-md-4">
-								<?php if ($form->getElement('language_id')->hasErrors()) {?>
-								<div class="has-error">
-									<?php foreach ($form->getElement('language_id')->getMessages() as $message) {?>
-									<p class="help-block"><?php echo $this->escape($message);?></p>
-									<?php }?>
-								</div>
-								<?php }?>
-							</div>
-						</div>
+                        <div class="form-group">
+                                <label class="col-md-4 control-label" for="category_id">Category</label>  
+                                <div class="col-md-4">
+                                        <?php 
+                                        echo $form->getElement('category_id')->setAttribs(array(
+                                                'class' => 'form-control input-md',
+                                                'id' => 'category_id',
+                                                'required' => 'required'
+                                        ));
+                                        ?>
+                                </div>
+                                <div class="col-md-4">
+                                        <?php if ($form->getElement('category_id')->hasErrors()) {?>
+                                        <div class="has-error">
+                                                <?php foreach ($form->getElement('category_id')->getMessages() as $message) {?>
+                                                <p class="help-block"><?php echo $this->escape($message);?></p>
+                                                <?php }?>
+                                        </div>
+                                        <?php }?>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label class="col-md-4 control-label" for="author_id">Author</label>  
+                                <div class="col-md-4">
+                                        <?php 
+                                        echo $form->getElement('author_id')->setAttribs(array(
+                                                'class' => 'form-control input-md',
+                                                'id' => 'author_id',
+                                                'required' => 'required',
+                                        ));
+                                        ?>
+                                </div>
+                                <div class="col-md-4">
+                                        <?php if ($form->getElement('author_id')->hasErrors()) {?>
+                                        <div class="has-error">
+                                                <?php foreach ($form->getElement('author_id')->getMessages() as $message) {?>
+                                                <p class="help-block"><?php echo $this->escape($message);?></p>
+                                                <?php }?>
+                                        </div>
+                                        <?php }?>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label class="col-md-4 control-label" for="cover_id">Cover</label>  
+                                <div class="col-md-4">
+                                        <?php 
+                                        echo $form->getElement('cover_id')->setAttribs(array(
+                                                'class' => 'form-control input-md',
+                                                'id' => 'cover_id',
+                                                'required' => 'required'
+                                        ));
+                                        ?>
+                                </div>
+                                <div class="col-md-4">
+                                        <?php if ($form->getElement('cover_id')->hasErrors()) {?>
+                                        <div class="has-error">
+                                                <?php foreach ($form->getElement('cover_id')->getMessages() as $message) {?>
+                                                <p class="help-block"><?php echo $this->escape($message);?></p>
+                                                <?php }?>
+                                        </div>
+                                        <?php }?>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label class="col-md-4 control-label" for="language_id">Language</label>  
+                                <div class="col-md-4">
+                                        <?php 
+                                        echo $form->getElement('language_id')->setAttribs(array(
+                                                'class' => 'form-control input-md',
+                                                'id' => 'language_id',
+                                                'required' => 'required',
+                                        ));
+                                        ?>
+                                </div>
+                                <div class="col-md-4">
+                                        <?php if ($form->getElement('language_id')->hasErrors()) {?>
+                                        <div class="has-error">
+                                                <?php foreach ($form->getElement('language_id')->getMessages() as $message) {?>
+                                                <p class="help-block"><?php echo $this->escape($message);?></p>
+                                                <?php }?>
+                                        </div>
+                                        <?php }?>
+                                </div>
+                        </div>
 
                         <!-- Textarea -->
                         <div class="form-group">

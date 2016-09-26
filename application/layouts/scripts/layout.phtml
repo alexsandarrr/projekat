@@ -67,19 +67,19 @@
                         <div class="col-md-4">
                             <article class="top-menu-third">
                                 <ul class="list-unstyled list-inline text-center">
-									<?php if (!Zend_Auth::getInstance()->hasIdentity()) { ?>
+                                    <?php if (!Zend_Auth::getInstance()->hasIdentity()) { ?>
                                     <li><a href="<?php echo $this->url(array('controller' => 'session', 'action' => 'login'), 'default', true);?>">Login</a></li>
                                     <li><a href="<?php echo $this->url(array('controller' => 'frontuser', 'action' => 'register'), 'default', true);?>">Registracija</a></li>
-									<?php } else {?>
+                                    <?php } else {?>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="<?php echo $this->url(array('controller' => 'frontuser', 'action' => 'index'), 'default', true);?>">Profile</a></li>
                                             <li><a href="#">My Shop</a></li>
                                             <li><a href="<?php echo $this->url(array('controller' => 'session', 'action' => 'logout'), 'default', true);?>">Log Out</a></li>
                                         </ul>
                                     </li>
-									<?php }?>
+                                    <?php }?>
                                 </ul>
                             </article>
                         </div>

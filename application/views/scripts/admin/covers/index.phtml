@@ -32,8 +32,7 @@ $this->headTitle('Covers');
                         </tr>
                     </thead>
                     <tbody>
-<?php foreach ($this->covers as $cover) { ?>
-
+                        <?php foreach ($this->covers as $cover) { ?>
                             <tr data-cover-id="<?php echo $this->escape($cover['id']); ?>">
                                 <td class="text-center"><i data-action="sort" class="glyphicon glyphicon-list" style="display: none; cursor: pointer;"></i></td>
                                 <td><?php echo $this->escape($cover['title']); ?></td>
@@ -45,9 +44,9 @@ $this->headTitle('Covers');
                                     </div>
                                 </td>
                             </tr>
-    <?php
-}
-?>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

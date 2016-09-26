@@ -1,6 +1,8 @@
 <?php
 
 $this->headTitle($this->sitemapPage['title']);
+$form = $this->form;
+$form->setElementDecorators(array('ViewHelper'));
 
 ?>
         <main class="bookMain">
@@ -34,7 +36,6 @@ $this->headTitle($this->sitemapPage['title']);
                                         <option>Po zanru</option>
                                     </select>
                                 </form>
-
                             </article>
                         </div>
                     </div>
@@ -44,39 +45,59 @@ $this->headTitle($this->sitemapPage['title']);
                      MAIN PRODUCTS-SORTING END
             ******************************************-->
             <section class="filter-wrapper">
-                <form class="formFilter">
-
+                <form class="formFilter" method="post" action="">
+                    <input type="hidden" name="task" value="filter">
                     <p class="firstTitle"><b>FILTER</b></p>
                     <div id="slider-range"></div>
                     <ul class="list-unstyled productCategories">    
                         <li class="titleProduct"><strong>BOOK CATEGORIES</strong><hr>
-                        <?php foreach ($this->categories as $category) {?>
-                            <li><?php echo $this->escape($category['title']);?></li>
-                        <?php }?>
+                        <li>
+                            <?php
+                            echo $form->getElement('category_id')->setAttribs(array(
+                                'for' => 'category_id'
+                            ));
+                            ?>
+                        </li>
+                        
                     </ul>
                     <ul class="list-unstyled productCategories">    
                         <li class="titleProduct"><strong>COVER</strong><hr>
-                        <?php foreach($this->covers as $cover) {?>
-                        <li><?php echo $this->escape($cover['title']);?> <span class="priceAuthor"></span></li>
-                        <?php }?>
+                        <li>
+                            <?php
+                            echo $form->getElement('cover_id')->setAttribs(array(
+                                'for' => 'cover_id'
+                            ));
+                            ?>
+                        </li>
                     </ul>
                     <ul class="list-unstyled productCategories">    
                         <li class="titles"><strong>AUTHOR</strong><hr>
-                        <?php foreach($this->authors as $author) {?>
-                        <li><?php echo $this->escape($author['name']);?> <span class="priceAuthor"></span></li>
-                        <?php }?>
+                        <li>
+                            <?php
+                            echo $form->getElement('author_id')->setAttribs(array(
+                                'for' => 'author_id'
+                            ));
+                            ?>
+                        </li>
                     </ul>
                     <ul class="list-unstyled productCategories">    
                         <li class="titles"><strong>LANGUAGE</strong><hr>
-                        <?php foreach($this->languages as $language) {?>
-                        <li><?php echo $this->escape($language['title']);?> <span class="priceAuthor"></span></li>
-                        <?php }?>
+                        <li>
+                            <?php
+                            echo $form->getElement('language_id')->setAttribs(array(
+                                'for' => 'language_id'
+                            ));
+                            ?>
+                        </li>
+                    </ul>
+                    <ul class="list-unstyled productCategories">
+                        <li>
+                            <button style="background-color:blue; height:6em; text-height: 8em" class="btn-default pull-right filterButton col-xs-12 ">FILTER</button>
+                        </li>
                     </ul>
                 </form>
             </section>
-			<hr>
-
-
+            <hr>
 
             <!--******************************************
                             MAIN BESTSELLERS START
@@ -102,7 +123,11 @@ $this->headTitle($this->sitemapPage['title']);
                                 }
                                 ?>
                             </p>
-                            <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php if ($book['sale'] == Application_Model_DbTable_CmsBooks::ON_SALE) {?>
+                            <p class="prise center-block"><?php echo $this->escape($book['sale_price']); ?><br><s><?php echo $this->escape($book['price']); ?></s><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php } else {?>
+                            <p class="prise center-block"><?php echo $this->escape($book['price']); ?><!--<br><br><a href="#" class="shop"><span><span class="fa fa-plus"></span><span class="fa fa-shopping-basket"></span></span></a>--></p>
+                            <?php }?>
                         </div>
                     <?php } ?>
                 </div>
